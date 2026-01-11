@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="description" content="About Us — Gabriel Professional Services" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        form-action 'self';
+        img-src 'self' data: blob: https:;
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        connect-src 'self' https:;
+      "
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>About Us · Gabriel Professional Services</title>
+
+    <style>
+      .hero.is-compact { min-height: 62vh; }
+
+      .prose {
+        max-width: 86ch;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 14.5px;
+      }
+
+      .prose strong { color: var(--fg); }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 18px;
+        align-items: start;
+        margin-top: 22px;
+      }
+
+      .stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .mini-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 16px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .mini-card h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .mini-card p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: rgba(124, 58, 237, 0.08);
+        border: 1px solid rgba(124, 58, 237, 0.16);
+        color: var(--muted);
+        font-weight: 900;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+      }
+
+      html[data-theme="dark"] .pill {
+        background: rgba(124, 58, 237, 0.16);
+        border-color: rgba(124, 58, 237, 0.22);
+        color: var(--brand-100);
+      }
+
+      .list {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+        display: grid;
+        gap: 8px;
+      }
+
+      @media (max-width: 980px) {
+        .about-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-elevate-on-scroll="true">
+      <div class="container header-row">
+        <a class="brand" href="/index.html" aria-label="Go to Home">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="rocket-3d" id="rocketLogo" role="img" aria-label="3D Rocket logo"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">Gabriel</span>
+            <span class="brand-subtitle">Professional Services</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a class="nav-link" href="/index.html" data-nav="home">Home</a>
+
+          <div class="nav-dropdown" data-dropdown data-open="false">
+            <button class="nav-link nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Services</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html">Services Overview</a>
+              <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html">Logistics Management</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html">IT Support Level I &amp; II</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html">C-Level Admin Support</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html">Customer Relations</a>
+            </div>
+          </div>
+
+          <a class="nav-link is-active" href="/pages/about.html" data-nav="about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers">Careers</a>
+          <a class="nav-link" href="/pages/contact.html" data-nav="contact">Contact</a>
+
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin">Client Portal</a>
+          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted">Start Scaling</a>
+
+          <div class="nav-tools" aria-label="Preferences">
+            <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
+              <span class="sr-only">Toggle theme</span>
+              <span aria-hidden="true">◐</span>
+            </button>
+
+            <button class="btn btn-ghost" type="button" id="langToggle" aria-pressed="false" title="Toggle language">
+              <span class="sr-only">Toggle language</span>
+              <span class="lang-pill" aria-hidden="true">EN</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero is-compact">
+        <div class="hero-3d" aria-hidden="true">
+          <canvas id="heroCanvas"></canvas>
+          <div class="hero-gradient-overlay" aria-hidden="true"></div>
+        </div>
+
+        <div class="container hero-grid" style="grid-template-columns: 1fr;">
+          <div class="hero-copy" style="max-width: 920px;">
+            <div class="badge" role="status">
+              <span class="badge-dot" aria-hidden="true"></span>
+              <span data-lang-en="Built for speed, designed for trust" data-lang-es="Hecho para velocidad, diseñado para confianza">
+                Built for speed, designed for trust
+              </span>
+            </div>
+
+            <h1 class="hero-title" style="margin-bottom: 10px;"
+              data-lang-en="About Gabriel Professional Services"
+              data-lang-es="Sobre Gabriel Professional Services">
+              About Gabriel Professional Services
+            </h1>
+
+            <p class="hero-subtitle" style="max-width: 78ch;"
+              data-lang-en="We provide fractional operations across logistics, IT support, customer relations, and executive administration — with secure-by-design workflows."
+              data-lang-es="Brindamos operaciones fraccionales en logística, soporte TI, relación con clientes y administración ejecutiva — con flujos seguros por diseño.">
+              We provide fractional operations across logistics, IT support, customer relations, and executive administration — with secure-by-design workflows.
+            </p>
+
+            <div class="hero-cta">
+              <a class="btn btn-primary btn-lg" href="/pages/get-started.html"
+                data-lang-en="Start Scaling" data-lang-es="Empezar">
+                Start Scaling
+              </a>
+              <a class="btn btn-secondary btn-lg" href="/pages/contact.html"
+                data-lang-en="Contact" data-lang-es="Contacto">
+                Contact
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTENT -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title" data-lang-en="Mission & Approach" data-lang-es="Misión y Enfoque">
+              Mission &amp; Approach
+            </h2>
+            <p class="section-subtitle"
+              data-lang-en="Operational outcomes first — delivered with security, clarity, and measurable KPIs."
+              data-lang-es="Resultados operativos primero — con seguridad, claridad y KPIs medibles.">
+              Operational outcomes first — delivered with security, clarity, and measurable KPIs.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div>
+              <div class="prose">
+                <p
+                  data-lang-en="We help modern teams move faster by removing operational bottlenecks: dispatch and tracking, helpdesk and access control, customer support workflows, and executive coordination. Every engagement starts with a clear scope, KPIs, and a short pilot plan."
+                  data-lang-es="Ayudamos a equipos modernos a avanzar más rápido eliminando cuellos de botella operativos: despacho y seguimiento, mesa de ayuda y control de accesos, flujos de soporte al cliente y coordinación ejecutiva. Cada proyecto inicia con alcance claro, KPIs y un plan piloto corto.">
+                  We help modern teams move faster by removing operational bottlenecks: dispatch and tracking, helpdesk and access control, customer support workflows, and executive coordination. Every engagement starts with a clear scope, KPIs, and a short pilot plan.
+                </p>
+
+                <p
+                  data-lang-en="Security is not a feature — it’s the baseline. We operate with secure-by-default practices: least privilege, audit trails, and anti-abuse controls. We also design for bilingual support (English/Spanish) and consistent brand tone."
+                  data-lang-es="La seguridad no es una función — es la base. Operamos con prácticas seguras por defecto: mínimo privilegio, trazabilidad y controles anti-abuso. También diseñamos soporte bilingüe (Inglés/Español) y un tono de marca consistente.">
+                  Security is not a feature — it’s the baseline. We operate with secure-by-default practices: least privilege, audit trails, and anti-abuse controls. We also design for bilingual support (English/Spanish) and consistent brand tone.
+                </p>
+
+                <div class="pill-row" aria-label="Principles">
+                  <span class="pill" data-lang-en="Outcome-driven" data-lang-es="Orientado a resultados">Outcome-driven</span>
+                  <span class="pill" data-lang-en="Secure-by-design" data-lang-es="Seguro por diseño">Secure-by-design</span>
+                  <span class="pill" data-lang-en="Bilingual ops" data-lang-es="Ops bilingüe">Bilingual ops</span>
+                  <span class="pill" data-lang-en="Clear KPIs" data-lang-es="KPIs claros">Clear KPIs</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stack" aria-label="Highlights">
+              <div class="mini-card">
+                <h3 data-lang-en="What we deliver" data-lang-es="Qué entregamos">What we deliver</h3>
+                <p data-lang-en="A clean operating system: workflows, reporting, and continuous improvement."
+                   data-lang-es="Un sistema operativo limpio: flujos, reportes y mejora continua.">
+                  A clean operating system: workflows, reporting, and continuous improvement.
+                </p>
+
+                <ul class="list">
+                  <li data-lang-en="Pilot → KPI baseline → scale plan" data-lang-es="Piloto → línea base KPI → plan de escala">
+                    Pilot → KPI baseline → scale plan
+                  </li>
+                  <li data-lang-en="Documentation & handoffs" data-lang-es="Documentación y entregas">
+                    Documentation & handoffs
+                  </li>
+                  <li data-lang-en="Process automation where it matters" data-lang-es="Automatización donde importa">
+                    Process automation where it matters
+                  </li>
+                </ul>
+              </div>
+
+              <div class="mini-card">
+                <h3 data-lang-en="Security posture" data-lang-es="Postura de seguridad">Security posture</h3>
+                <p
+                  data-lang-en="We use practical security controls and governance habits aligned with modern standards."
+                  data-lang-es="Usamos controles prácticos y hábitos de gobernanza alineados a estándares modernos.">
+                  We use practical security controls and governance habits aligned with modern standards.
+                </p>
+
+                <ul class="list">
+                  <li data-lang-en="Least privilege + access reviews" data-lang-es="Mínimo privilegio + revisión de accesos">
+                    Least privilege + access reviews
+                  </li>
+                  <li data-lang-en="Abuse prevention + rate limiting" data-lang-es="Prevención de abuso + rate limiting">
+                    Abuse prevention + rate limiting
+                  </li>
+                  <li data-lang-en="Audit trails for critical actions" data-lang-es="Trazabilidad para acciones críticas">
+                    Audit trails for critical actions
+                  </li>
+                </ul>
+              </div>
+
+              <div class="mini-card">
+                <h3 data-lang-en="Engagement style" data-lang-es="Estilo de trabajo">Engagement style</h3>
+                <p
+                  data-lang-en="Fast communication, weekly reporting, and continuous alignment."
+                  data-lang-es="Comunicación rápida, reportes semanales y alineación continua.">
+                  Fast communication, weekly reporting, and continuous alignment.
+                </p>
+
+                <ul class="list">
+                  <li data-lang-en="Weekly KPI review" data-lang-es="Revisión semanal de KPIs">Weekly KPI review</li>
+                  <li data-lang-en="Bilingual support (EN/ES)" data-lang-es="Soporte bilingüe (EN/ES)">Bilingual support (EN/ES)</li>
+                  <li data-lang-en="Clear scope boundaries" data-lang-es="Límites claros de alcance">Clear scope boundaries</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 28px;">
+            <section class="cta-strip" style="border-radius: 22px; overflow: hidden;">
+              <div class="container cta-row">
+                <div>
+                  <h2 class="cta-title"
+                    data-lang-en="Want a focused pilot in days?"
+                    data-lang-es="¿Quieres un piloto enfocado en días?">
+                    Want a focused pilot in days?
+                  </h2>
+                  <p class="cta-subtitle"
+                    data-lang-en="Tell us your bottleneck — we’ll propose a short plan and success metrics."
+                    data-lang-es="Cuéntanos tu cuello de botella — proponemos un plan corto y métricas de éxito.">
+                    Tell us your bottleneck — we’ll propose a short plan and success metrics.
+                  </p>
+                </div>
+                <div class="cta-actions">
+                  <a class="btn btn-primary btn-lg" href="/pages/get-started.html"
+                    data-lang-en="Start Scaling" data-lang-es="Empezar">
+                    Start Scaling
+                  </a>
+                  <a class="btn btn-ghost btn-lg" href="/pages/contact.html"
+                    data-lang-en="Contact" data-lang-es="Contacto">
+                    Contact
+                  </a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-title">Gabriel Professional Services</div>
+          <div class="footer-note"
+            data-lang-en="Secure-by-design operational support for modern teams."
+            data-lang-es="Soporte operativo con seguridad desde el diseño.">
+            Secure-by-design operational support for modern teams.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/pages/about.html">About Us</a>
+          <a href="/pages/services.html">Services</a>
+          <a href="/pages/careers.html">Careers</a>
+          <a href="/pages/contact.html">Contact</a>
+          <a href="/pages/privacy.html">Privacy</a>
+          <a href="/pages/terms.html">Terms</a>
+          <a href="/pages/gdpr.html">GDPR</a>
+          <a href="/pages/consent.html">Privacy &amp; Consent</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span class="copyright">© <span id="year"></span> Gabriel</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/app.js"></script>
+
+    <!-- Page: EN/ES swap for data-lang-* fields -->
+    <script type="module">
+      const getLang = () => (document.documentElement.lang === "es" ? "es" : "en");
+
+      function syncLangText() {
+        const lang = getLang();
+        document.querySelectorAll("[data-lang-en][data-lang-es]").forEach((el) => {
+          const v = el.getAttribute(lang === "es" ? "data-lang-es" : "data-lang-en");
+          if (typeof v === "string") el.textContent = v;
+        });
+      }
+
+      const langBtn = document.getElementById("langToggle");
+      if (langBtn) langBtn.addEventListener("click", () => setTimeout(syncLangText, 0));
+
+      syncLangText();
+    </script>
+  </body>
+</html>
