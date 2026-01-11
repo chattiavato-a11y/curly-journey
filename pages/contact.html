@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="description" content="Contact — Gabriel Professional Services" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        form-action 'self';
+        img-src 'self' data: blob: https:;
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        connect-src 'self' https:;
+      "
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>Contact · Gabriel Professional Services</title>
+
+    <style>
+      .hero.is-compact { min-height: 58vh; }
+
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 18px;
+        align-items: start;
+        margin-top: 22px;
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 22px;
+        padding: 18px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .panel h2 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .panel p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+      }
+
+      .form {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .label {
+        font-weight: 900;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+      }
+
+      .hint {
+        font-weight: 650;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: -2px;
+      }
+
+      .input,
+      .textarea,
+      .select {
+        width: 100%;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--fg);
+        padding: 12px 14px;
+        outline: none;
+        transition: box-shadow 160ms ease, border-color 160ms ease, transform 160ms ease;
+      }
+
+      .textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      .input:focus,
+      .textarea:focus,
+      .select:focus {
+        box-shadow: var(--focus);
+        border-color: rgba(124, 58, 237, 0.45);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .row-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 6px;
+      }
+
+      .consent-note {
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 12px;
+        max-width: 70ch;
+      }
+
+      .consent-note a {
+        font-weight: 900;
+        color: var(--brand-700);
+        text-decoration: underline;
+      }
+      html[data-theme="dark"] .consent-note a { color: var(--brand-300); }
+
+      .side-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .mini {
+        background: linear-gradient(180deg, rgba(124, 58, 237, 0.10), var(--card));
+        border: 1px solid rgba(124, 58, 237, 0.18);
+        border-radius: 22px;
+        padding: 18px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      html[data-theme="dark"] .mini {
+        background: linear-gradient(180deg, rgba(124, 58, 237, 0.18), var(--card));
+        border-color: rgba(124, 58, 237, 0.22);
+      }
+
+      .mini h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .mini ul {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+        display: grid;
+        gap: 8px;
+      }
+
+      /* Success Modal */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(10px);
+        z-index: 200;
+      }
+      .modal-overlay[data-open="true"] { display: flex; }
+
+      .modal-card {
+        width: min(720px, 100%);
+        overflow: hidden;
+        border-radius: 22px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+      }
+
+      .modal-head {
+        padding: 18px 18px 14px;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.16), rgba(124, 58, 237, 0.05));
+        border-bottom: 1px solid rgba(124, 58, 237, 0.14);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .modal-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .modal-body {
+        padding: 16px 18px 18px;
+      }
+
+      .modal-text {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .modal-actions {
+        padding: 14px 18px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        background: var(--bg-elev);
+        backdrop-filter: blur(12px);
+      }
+
+      .ok-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: rgba(34, 197, 94, 0.10);
+        border: 1px solid rgba(34, 197, 94, 0.18);
+        color: var(--muted);
+        font-weight: 900;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+      }
+
+      .ok-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: #22c55e;
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+      }
+
+      @media (max-width: 980px) {
+        .contact-wrap { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 620px) {
+        .grid-2 { grid-template-columns: 1fr; }
+        .row-actions { justify-content: flex-start; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-elevate-on-scroll="true">
+      <div class="container header-row">
+        <a class="brand" href="/index.html" aria-label="Go to Home">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="rocket-3d" id="rocketLogo" role="img" aria-label="3D Rocket logo"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">Gabriel</span>
+            <span class="brand-subtitle">Professional Services</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a class="nav-link" href="/index.html" data-nav="home">Home</a>
+
+          <div class="nav-dropdown" data-dropdown data-open="false">
+            <button class="nav-link nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Services</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html">Services Overview</a>
+              <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html">Logistics Management</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html">IT Support Level I &amp; II</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html">C-Level Admin Support</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html">Customer Relations</a>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/pages/about.html" data-nav="about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers">Careers</a>
+          <a class="nav-link is-active" href="/pages/contact.html" data-nav="contact">Contact</a>
+
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin">Client Portal</a>
+          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted">Start Scaling</a>
+
+          <div class="nav-tools" aria-label="Preferences">
+            <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
+              <span class="sr-only">Toggle theme</span>
+              <span aria-hidden="true">◐</span>
+            </button>
+
+            <button class="btn btn-ghost" type="button" id="langToggle" aria-pressed="false" title="Toggle language">
+              <span class="sr-only">Toggle language</span>
+              <span class="lang-pill" aria-hidden="true">EN</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero is-compact">
+        <div class="hero-3d" aria-hidden="true">
+          <canvas id="heroCanvas"></canvas>
+          <div class="hero-gradient-overlay" aria-hidden="true"></div>
+        </div>
+
+        <div class="container hero-grid" style="grid-template-columns: 1fr;">
+          <div class="hero-copy" style="max-width: 920px;">
+            <div class="badge" role="status">
+              <span class="badge-dot" aria-hidden="true"></span>
+              <span
+                data-lang-en="Fast response • Clear scope • Secure workflows"
+                data-lang-es="Respuesta rápida • Alcance claro • Flujos seguros"
+              >
+                Fast response • Clear scope • Secure workflows
+              </span>
+            </div>
+
+            <h1 class="hero-title" style="margin-bottom: 10px;"
+              data-lang-en="Contact Sales"
+              data-lang-es="Contactar Ventas">
+              Contact Sales
+            </h1>
+
+            <p class="hero-subtitle" style="max-width: 78ch;"
+              data-lang-en="Tell us your bottleneck. We’ll reply with a short plan, timeline, and success metrics."
+              data-lang-es="Cuéntanos tu cuello de botella. Responderemos con un plan corto, cronograma y métricas de éxito.">
+              Tell us your bottleneck. We’ll reply with a short plan, timeline, and success metrics.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Contact form">
+        <div class="container">
+          <div class="contact-wrap">
+            <!-- Form panel -->
+            <div class="panel">
+              <h2 data-lang-en="Send a message" data-lang-es="Enviar mensaje">Send a message</h2>
+              <p
+                data-lang-en="This form is a secure request for consultation. Please avoid sharing sensitive personal info."
+                data-lang-es="Este formulario es una solicitud de consulta. Por favor evita compartir información personal sensible."
+              >
+                This form is a secure request for consultation. Please avoid sharing sensitive personal info.
+              </p>
+
+              <form class="form" id="contactForm" novalidate>
+                <div class="grid-2">
+                  <div class="field">
+                    <label class="label" for="fullName" id="labelFullName"
+                      data-lang-en="Full name" data-lang-es="Nombre completo">
+                      Full name
+                    </label>
+                    <input
+                      class="input"
+                      id="fullName"
+                      name="fullName"
+                      type="text"
+                      autocomplete="name"
+                      required
+                      aria-labelledby="labelFullName"
+                      aria-describedby="hintFullName"
+                      placeholder="Gabriel / Gabo"
+                    />
+                    <div class="hint" id="hintFullName"
+                      data-lang-en="How should we address you?"
+                      data-lang-es="¿Cómo debemos llamarte?">
+                      How should we address you?
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label" for="email" id="labelEmail"
+                      data-lang-en="Email" data-lang-es="Correo">
+                      Email
+                    </label>
+                    <input
+                      class="input"
+                      id="email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      required
+                      aria-labelledby="labelEmail"
+                      aria-describedby="hintEmail"
+                      placeholder="you@company.com"
+                    />
+                    <div class="hint" id="hintEmail"
+                      data-lang-en="We’ll reply here."
+                      data-lang-es="Responderemos aquí.">
+                      We’ll reply here.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid-2">
+                  <div class="field">
+                    <label class="label" for="company" id="labelCompany"
+                      data-lang-en="Company" data-lang-es="Empresa">
+                      Company
+                    </label>
+                    <input
+                      class="input"
+                      id="company"
+                      name="company"
+                      type="text"
+                      autocomplete="organization"
+                      aria-labelledby="labelCompany"
+                      aria-describedby="hintCompany"
+                      placeholder="OPS / Chattia / Your Business"
+                    />
+                    <div class="hint" id="hintCompany"
+                      data-lang-en="Optional."
+                      data-lang-es="Opcional.">
+                      Optional.
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label" for="service" id="labelService"
+                      data-lang-en="Service of interest" data-lang-es="Servicio de interés">
+                      Service of interest
+                    </label>
+                    <select
+                      class="select"
+                      id="service"
+                      name="service"
+                      aria-labelledby="labelService"
+                      aria-describedby="hintService"
+                    >
+                      <option value="general" data-lang-en="General inquiry" data-lang-es="Consulta general">General inquiry</option>
+                      <option value="logistics" data-lang-en="Logistics Management" data-lang-es="Gestión Logística">Logistics Management</option>
+                      <option value="itsupport" data-lang-en="IT Support Level I & II" data-lang-es="Soporte TI Nivel I & II">IT Support Level I &amp; II</option>
+                      <option value="admin" data-lang-en="C-Level Admin Support" data-lang-es="Soporte Admin Nivel C">C-Level Admin Support</option>
+                      <option value="relations" data-lang-en="Customer Relations" data-lang-es="Relaciones con Clientes">Customer Relations</option>
+                    </select>
+                    <div class="hint" id="hintService"
+                      data-lang-en="Helps us route your request."
+                      data-lang-es="Nos ayuda a enrutar tu solicitud.">
+                      Helps us route your request.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label" for="message" id="labelMessage"
+                    data-lang-en="Message" data-lang-es="Mensaje">
+                    Message
+                  </label>
+                  <textarea
+                    class="textarea"
+                    id="message"
+                    name="message"
+                    required
+                    aria-labelledby="labelMessage"
+                    aria-describedby="hintMessage"
+                    placeholder="Tell us what you need, your timeline, and the outcome you want."
+                  ></textarea>
+                  <div class="hint" id="hintMessage"
+                    data-lang-en="No passwords, IDs, or sensitive personal data."
+                    data-lang-es="Sin contraseñas, IDs o datos personales sensibles.">
+                    No passwords, IDs, or sensitive personal data.
+                  </div>
+                </div>
+
+                <div class="row-actions">
+                  <p class="consent-note" id="consentNote">
+                    <span
+                      data-lang-en="By submitting, you agree to our"
+                      data-lang-es="Al enviar, aceptas nuestra"
+                    >
+                      By submitting, you agree to our
+                    </span>
+                    <a href="/pages/consent.html"
+                      data-lang-en="Privacy & Consent"
+                      data-lang-es="Privacidad y Consentimiento">
+                      Privacy &amp; Consent
+                    </a>
+                    <span
+                      data-lang-en="terms."
+                      data-lang-es=".">
+                      terms.
+                    </span>
+                  </p>
+
+                  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <button class="btn btn-ghost" type="reset"
+                      data-lang-en="Clear" data-lang-es="Limpiar">
+                      Clear
+                    </button>
+                    <button class="btn btn-primary" type="submit" id="submitBtn"
+                      data-lang-en="Send Message" data-lang-es="Enviar">
+                      Send Message
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Side panel -->
+            <aside class="side-stack" aria-label="Contact details">
+              <div class="mini">
+                <h3 data-lang-en="What happens next" data-lang-es="Qué sigue">What happens next</h3>
+                <p style="margin:0; color:var(--muted); font-weight:650; font-size:13px;"
+                  data-lang-en="You’ll get a reply with scope, timeline, and a short pilot proposal."
+                  data-lang-es="Recibirás una respuesta con alcance, cronograma y propuesta piloto.">
+                  You’ll get a reply with scope, timeline, and a short pilot proposal.
+                </p>
+
+                <ul>
+                  <li data-lang-en="1) Clarify the bottleneck" data-lang-es="1) Aclarar el cuello de botella">1) Clarify the bottleneck</li>
+                  <li data-lang-en="2) Define KPIs" data-lang-es="2) Definir KPIs">2) Define KPIs</li>
+                  <li data-lang-en="3) Pilot plan" data-lang-es="3) Plan piloto">3) Pilot plan</li>
+                  <li data-lang-en="4) Scale execution" data-lang-es="4) Ejecución y escala">4) Scale execution</li>
+                </ul>
+              </div>
+
+              <div class="mini">
+                <h3 data-lang-en="Security note" data-lang-es="Nota de seguridad">Security note</h3>
+                <p style="margin:0; color:var(--muted); font-weight:650; font-size:13px;"
+                  data-lang-en="Please do not include passwords, full card numbers, or government IDs."
+                  data-lang-es="Por favor no incluyas contraseñas, números completos de tarjeta o IDs gubernamentales.">
+                  Please do not include passwords, full card numbers, or government IDs.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal" data-open="false" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+        <div class="modal-head">
+          <div>
+            <h3 class="modal-title" id="successTitle"
+              data-lang-en="Message sent"
+              data-lang-es="Mensaje enviado">
+              Message sent
+            </h3>
+            <p class="modal-text" id="successText"
+              data-lang-en="Thanks — we received your request. We’ll respond to your email with next steps."
+              data-lang-es="Gracias — recibimos tu solicitud. Responderemos a tu correo con los siguientes pasos.">
+              Thanks — we received your request. We’ll respond to your email with next steps.
+            </p>
+
+            <div class="ok-badge" role="status" aria-live="polite">
+              <span class="ok-dot" aria-hidden="true"></span>
+              <span data-lang-en="Request recorded" data-lang-es="Solicitud registrada">Request recorded</span>
+            </div>
+          </div>
+
+          <button class="btn btn-ghost" type="button" id="successCloseX" aria-label="Close">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <p class="modal-text"
+            data-lang-en="Tip: If you need urgent support, include your timezone and preferred contact window."
+            data-lang-es="Tip: Si necesitas soporte urgente, incluye tu zona horaria y horario preferido.">
+            Tip: If you need urgent support, include your timezone and preferred contact window.
+          </p>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-primary" type="button" id="successCloseBtn"
+            data-lang-en="Close" data-lang-es="Cerrar">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-title">Gabriel Professional Services</div>
+          <div class="footer-note"
+            data-lang-en="Secure-by-design operational support for modern teams."
+            data-lang-es="Soporte operativo con seguridad desde el diseño.">
+            Secure-by-design operational support for modern teams.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/pages/about.html">About Us</a>
+          <a href="/pages/services.html">Services</a>
+          <a href="/pages/careers.html">Careers</a>
+          <a href="/pages/contact.html">Contact</a>
+          <a href="/pages/privacy.html">Privacy</a>
+          <a href="/pages/terms.html">Terms</a>
+          <a href="/pages/gdpr.html">GDPR</a>
+          <a href="/pages/consent.html">Privacy &amp; Consent</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span class="copyright">© <span id="year"></span> Gabriel</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/app.js"></script>
+
+    <!-- Page logic: EN/ES swap + success modal -->
+    <script type="module">
+      const form = document.getElementById("contactForm");
+      const modal = document.getElementById("successModal");
+      const closeBtn = document.getElementById("successCloseBtn");
+      const closeX = document.getElementById("successCloseX");
+      const submitBtn = document.getElementById("submitBtn");
+
+      const getLang = () => (document.documentElement.lang === "es" ? "es" : "en");
+
+      function syncLangText() {
+        const lang = getLang();
+        document.querySelectorAll("[data-lang-en][data-lang-es]").forEach((el) => {
+          const v = el.getAttribute(lang === "es" ? "data-lang-es" : "data-lang-en");
+          if (typeof v === "string") el.textContent = v;
+        });
+      }
+
+      function openModal() {
+        modal.setAttribute("data-open", "true");
+        modal.setAttribute("aria-hidden", "false");
+        closeBtn.focus();
+      }
+
+      function closeModal() {
+        modal.setAttribute("data-open", "false");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      // Minimal validation + success modal
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          // Basic HTML validity
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          // Demo behavior (no backend yet): show success and reset
+          if (submitBtn) submitBtn.disabled = true;
+
+          setTimeout(() => {
+            openModal();
+            form.reset();
+            if (submitBtn) submitBtn.disabled = false;
+          }, 250);
+        });
+      }
+
+      // Close handlers
+      closeBtn.addEventListener("click", closeModal);
+      closeX.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.getAttribute("data-open") === "true") closeModal();
+      });
+
+      // React to language toggle (app.js updates <html lang>)
+      const langBtn = document.getElementById("langToggle");
+      if (langBtn) langBtn.addEventListener("click", () => setTimeout(syncLangText, 0));
+
+      syncLangText();
+    </script>
+  </body>
+</html>
