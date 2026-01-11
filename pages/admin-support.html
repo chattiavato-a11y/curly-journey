@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="description" content="C-Level Admin Support — Gabriel Professional Services" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        form-action 'self';
+        img-src 'self' data: blob: https:;
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        connect-src 'self' https:;
+      "
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>C-Level Admin Support · Gabriel Professional Services</title>
+
+    <style>
+      .hero.is-compact { min-height: 62vh; }
+
+      .service-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 18px;
+        align-items: start;
+        margin-top: 18px;
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 22px;
+        padding: 18px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .panel h3 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .panel p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: rgba(124, 58, 237, 0.08);
+        border: 1px solid rgba(124, 58, 237, 0.16);
+        color: var(--muted);
+        font-weight: 900;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+      }
+
+      html[data-theme="dark"] .pill {
+        background: rgba(124, 58, 237, 0.16);
+        border-color: rgba(124, 58, 237, 0.22);
+        color: var(--brand-100);
+      }
+
+      .features {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .feat {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 22px;
+        padding: 16px;
+        box-shadow: var(--shadow-sm);
+        transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+      }
+
+      .feat:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: rgba(124, 58, 237, 0.22);
+      }
+
+      .feat-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        background: rgba(124, 58, 237, 0.10);
+        border: 1px solid rgba(124, 58, 237, 0.16);
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      .feat-title {
+        margin: 0 0 6px;
+        font-size: 14px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .feat-desc {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+      }
+
+      .cta-card {
+        border-radius: 24px;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.92), rgba(147, 51, 234, 0.92));
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: 0 24px 90px rgba(124, 58, 237, 0.25);
+        position: relative;
+      }
+
+      .cta-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.08;
+        background-image:
+          linear-gradient(to right, #fff 1px, transparent 1px),
+          linear-gradient(to bottom, #fff 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+      }
+
+      .cta-inner {
+        position: relative;
+        z-index: 1;
+        padding: 18px;
+      }
+
+      .cta-inner h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .cta-inner p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.88);
+        font-weight: 650;
+      }
+
+      .cta-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+
+      .cta-actions .btn { border-color: rgba(255,255,255,0.22); }
+      .cta-actions .btn.btn-secondary { background: rgba(255,255,255,0.16); color: #fff; }
+      .cta-actions .btn.btn-secondary:hover { background: rgba(255,255,255,0.22); }
+
+      .quote {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.90);
+        font-weight: 650;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .stat {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
+        padding: 12px;
+      }
+
+      .stat .label {
+        font-weight: 900;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .stat .value {
+        margin-top: 6px;
+        font-weight: 950;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+        color: #fff;
+      }
+
+      @media (max-width: 980px) {
+        .service-grid { grid-template-columns: 1fr; }
+        .features { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-elevate-on-scroll="true">
+      <div class="container header-row">
+        <a class="brand" href="/index.html" aria-label="Go to Home">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="rocket-3d" id="rocketLogo" role="img" aria-label="3D Rocket logo"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">Gabriel</span>
+            <span class="brand-subtitle">Professional Services</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a class="nav-link" href="/index.html" data-nav="home">Home</a>
+
+          <div class="nav-dropdown" data-dropdown data-open="false">
+            <button class="nav-link nav-dropdown-btn is-active" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Services</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html">Services Overview</a>
+              <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html">Logistics Management</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html">IT Support Level I &amp; II</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html">C-Level Admin Support</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html">Customer Relations</a>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/pages/about.html" data-nav="about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers">Careers</a>
+          <a class="nav-link" href="/pages/contact.html" data-nav="contact">Contact</a>
+
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin">Client Portal</a>
+          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted">Start Scaling</a>
+
+          <div class="nav-tools" aria-label="Preferences">
+            <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
+              <span class="sr-only">Toggle theme</span>
+              <span aria-hidden="true">◐</span>
+            </button>
+
+            <button class="btn btn-ghost" type="button" id="langToggle" aria-pressed="false" title="Toggle language">
+              <span class="sr-only">Toggle language</span>
+              <span class="lang-pill" aria-hidden="true">EN</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero is-compact">
+        <div class="hero-3d" aria-hidden="true">
+          <canvas id="heroCanvas"></canvas>
+          <div class="hero-gradient-overlay" aria-hidden="true"></div>
+        </div>
+
+        <div class="container hero-grid" style="grid-template-columns: 1fr;">
+          <div class="hero-copy" style="max-width: 920px;">
+            <div class="badge" role="status">
+              <span class="badge-dot" aria-hidden="true"></span>
+              <span
+                data-lang-en="Executive support • Scheduling • Communications • High trust"
+                data-lang-es="Soporte ejecutivo • Agenda • Comunicaciones • Alta confianza"
+              >
+                Executive support • Scheduling • Communications • High trust
+              </span>
+            </div>
+
+            <h1
+              class="hero-title"
+              style="margin-bottom: 10px;"
+              data-lang-en="C-Level Admin Support"
+              data-lang-es="Soporte Administrativo Nivel C"
+            >
+              C-Level Admin Support
+            </h1>
+
+            <p
+              class="hero-subtitle"
+              style="max-width: 78ch;"
+              data-lang-en="Executive assistance designed for leadership. We handle the details so you can lead with clarity and focus."
+              data-lang-es="Asistencia ejecutiva diseñada para el liderazgo. Manejamos los detalles para que usted lidere con claridad y enfoque."
+            >
+              Executive assistance designed for leadership. We handle the details so you can lead with clarity and focus.
+            </p>
+
+            <div class="hero-cta">
+              <a class="btn btn-primary btn-lg" href="/pages/get-started.html"
+                data-lang-en="Start Scaling" data-lang-es="Empezar">
+                Start Scaling
+              </a>
+
+              <a class="btn btn-secondary btn-lg" href="/pages/contact.html?service=admin"
+                data-lang-en="Contact Sales" data-lang-es="Contactar Ventas">
+                Contact Sales
+              </a>
+
+              <a class="btn btn-ghost btn-lg" href="/pages/services.html"
+                data-lang-en="Back to Services" data-lang-es="Volver a Servicios">
+                Back to Services
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAIN -->
+      <section class="section">
+        <div class="container">
+          <div class="service-grid">
+            <div class="panel">
+              <h3 data-lang-en="Core capabilities" data-lang-es="Capacidades principales">Core capabilities</h3>
+              <p
+                data-lang-en="High-trust executive operations support — scheduling, coordination, and communication — delivered with precision."
+                data-lang-es="Soporte ejecutivo de alta confianza — agenda, coordinación y comunicación — con precisión."
+              >
+                High-trust executive operations support — scheduling, coordination, and communication — delivered with precision.
+              </p>
+
+              <div class="pill-row" aria-label="Admin support highlights">
+                <span class="pill" data-lang-en="Time-zone mastery" data-lang-es="Dominio de zonas horarias">Time-zone mastery</span>
+                <span class="pill" data-lang-en="Inbox triage" data-lang-es="Triage de bandeja">Inbox triage</span>
+                <span class="pill" data-lang-en="Meeting readiness" data-lang-es="Listo para reuniones">Meeting readiness</span>
+                <span class="pill" data-lang-en="Confidentiality" data-lang-es="Confidencialidad">Confidentiality</span>
+              </div>
+
+              <div class="features" aria-label="Admin support features">
+                <article class="feat">
+                  <div class="feat-icon" aria-hidden="true">📅</div>
+                  <h4 class="feat-title" data-lang-en="Calendar Management" data-lang-es="Gestión de Calendario">
+                    Calendar Management
+                  </h4>
+                  <p class="feat-desc"
+                    data-lang-en="Complex scheduling across time zones to maximize executive productivity."
+                    data-lang-es="Programación compleja en diferentes zonas horarias para maximizar productividad ejecutiva.">
+                    Complex scheduling across time zones to maximize executive productivity.
+                  </p>
+                </article>
+
+                <article class="feat">
+                  <div class="feat-icon" aria-hidden="true">🧳</div>
+                  <h4 class="feat-title" data-lang-en="Travel Coordination" data-lang-es="Coordinación de Viajes">
+                    Travel Coordination
+                  </h4>
+                  <p class="feat-desc"
+                    data-lang-en="Seamless itineraries, bookings, and logistics — with contingency planning."
+                    data-lang-es="Itinerarios, reservas y logística sin fricción — con planes de contingencia.">
+                    Seamless itineraries, bookings, and logistics — with contingency planning.
+                  </p>
+                </article>
+
+                <article class="feat">
+                  <div class="feat-icon" aria-hidden="true">📄</div>
+                  <h4 class="feat-title" data-lang-en="Documents & Briefs" data-lang-es="Documentos y Briefs">
+                    Documents &amp; Briefs
+                  </h4>
+                  <p class="feat-desc"
+                    data-lang-en="Prepare agendas, meeting briefs, notes, and follow-ups with clear owners."
+                    data-lang-es="Prepare agendas, briefs, notas y seguimientos con responsables claros.">
+                    Prepare agendas, meeting briefs, notes, and follow-ups with clear owners.
+                  </p>
+                </article>
+
+                <article class="feat">
+                  <div class="feat-icon" aria-hidden="true">📨</div>
+                  <h4 class="feat-title" data-lang-en="Executive Comms" data-lang-es="Comunicaciones Ejecutivas">
+                    Executive Comms
+                  </h4>
+                  <p class="feat-desc"
+                    data-lang-en="Inbox triage, drafts, and priority routing — so leadership stays focused."
+                    data-lang-es="Triage de correos, borradores y enrutamiento prioritario — para mantener el enfoque.">
+                    Inbox triage, drafts, and priority routing — so leadership stays focused.
+                  </p>
+                </article>
+
+                <article class="feat">
+                  <div class="feat-icon" aria-hidden="true">🤝</div>
+                  <h4 class="feat-title" data-lang-en="Stakeholder Support" data-lang-es="Soporte a Stakeholders">
+                    Stakeholder Support
+                  </h4>
+                  <p class="feat-desc"
+                    data-lang-en="Professional liaison with partners, clients, board members, and internal teams."
+                    data-lang-es="Enlace profesional con socios, clientes, junta y equipos internos.">
+                    Professional liaison with partners, clients, board members, and internal teams.
+                  </p>
+                </article>
+
+                <article class="feat">
+                  <div class="feat-icon" aria-hidden="true">🧠</div>
+                  <h4 class="feat-title" data-lang-en="Ops Systemization" data-lang-es="Sistematización Operativa">
+                    Ops Systemization
+                  </h4>
+                  <p class="feat-desc"
+                    data-lang-en="SOPs, trackers, and lightweight workflows that make leadership scale."
+                    data-lang-es="SOPs, trackers y flujos ligeros que ayudan a escalar el liderazgo.">
+                    SOPs, trackers, and lightweight workflows that make leadership scale.
+                  </p>
+                </article>
+              </div>
+            </div>
+
+            <aside class="cta-card" aria-label="Admin support case study">
+              <div class="cta-inner">
+                <h3 data-lang-en="Leadership time, protected" data-lang-es="Tiempo de liderazgo, protegido">
+                  Leadership time, protected
+                </h3>
+
+                <p
+                  data-lang-en="We reduce meeting drag, keep priorities sharp, and make follow-through automatic."
+                  data-lang-es="Reducimos fricción en reuniones, mantenemos prioridades claras y automatizamos el seguimiento."
+                >
+                  We reduce meeting drag, keep priorities sharp, and make follow-through automatic.
+                </p>
+
+                <div class="quote">
+                  <span
+                    data-lang-en="“Calendar chaos disappeared. My week became predictable — and outcomes improved.”"
+                    data-lang-es="“El caos de la agenda desapareció. Mi semana se volvió predecible — y mejoraron los resultados.”"
+                  >
+                    “Calendar chaos disappeared. My week became predictable — and outcomes improved.”
+                  </span>
+                </div>
+
+                <div class="stats-grid" aria-label="Results">
+                  <div class="stat">
+                    <div class="label" data-lang-en="Time Saved" data-lang-es="Tiempo Ahorrado">Time Saved</div>
+                    <div class="value">8–12 hrs/wk</div>
+                  </div>
+                  <div class="stat">
+                    <div class="label" data-lang-en="On-time Meetings" data-lang-es="Reuniones Puntuales">On-time Meetings</div>
+                    <div class="value">98%</div>
+                  </div>
+                </div>
+
+                <div class="cta-actions">
+                  <a class="btn btn-secondary btn-lg" href="/pages/contact.html?service=admin"
+                    data-lang-en="Find Your Assistant" data-lang-es="Encuentre su Asistente">
+                    Find Your Assistant
+                  </a>
+                  <a class="btn btn-ghost btn-lg" href="/pages/get-started.html"
+                    data-lang-en="Start Scaling" data-lang-es="Empezar">
+                    Start Scaling
+                  </a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-title">Gabriel Professional Services</div>
+          <div
+            class="footer-note"
+            data-lang-en="Secure-by-design operational support for modern teams."
+            data-lang-es="Soporte operativo con seguridad desde el diseño."
+          >
+            Secure-by-design operational support for modern teams.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/pages/about.html">About Us</a>
+          <a href="/pages/services.html">Services</a>
+          <a href="/pages/careers.html">Careers</a>
+          <a href="/pages/contact.html">Contact</a>
+          <a href="/pages/privacy.html">Privacy</a>
+          <a href="/pages/terms.html">Terms</a>
+          <a href="/pages/gdpr.html">GDPR</a>
+          <a href="/pages/consent.html">Privacy &amp; Consent</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span class="copyright">© <span id="year"></span> Gabriel</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/app.js"></script>
+
+    <!-- Page: EN/ES swap for data-lang-* fields -->
+    <script type="module">
+      const getLang = () => (document.documentElement.lang === "es" ? "es" : "en");
+
+      function syncLangText() {
+        const lang = getLang();
+        document.querySelectorAll("[data-lang-en][data-lang-es]").forEach((el) => {
+          const v = el.getAttribute(lang === "es" ? "data-lang-es" : "data-lang-en");
+          if (typeof v === "string") el.textContent = v;
+        });
+      }
+
+      const langBtn = document.getElementById("langToggle");
+      if (langBtn) langBtn.addEventListener("click", () => setTimeout(syncLangText, 0));
+
+      syncLangText();
+    </script>
+  </body>
+</html>
