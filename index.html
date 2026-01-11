@@ -1,1 +1,302 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta
+      name="description"
+      content="Gabriel Professional Services — High-performance fractional operations for modern SMBs."
+    />
+
+    <!-- CSP (we'll also mirror this later in _headers for Cloudflare Pages) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        form-action 'self';
+        img-src 'self' data: blob: https:;
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        connect-src 'self' https:;
+      "
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Core styles (we’ll create this next) -->
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+    <title>Gabriel Professional Services</title>
+  </head>
+
+  <body>
+    <!-- Skip link -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Top bar / Nav -->
+    <header class="site-header" data-elevate-on-scroll="true">
+      <div class="container header-row">
+        <a class="brand" href="/index.html" aria-label="Go to Home">
+          <span class="brand-mark" aria-hidden="true">
+            <!-- 3D rocket mounts here -->
+            <span class="rocket-3d" id="rocketLogo" role="img" aria-label="3D Rocket logo"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">Gabriel</span>
+            <span class="brand-subtitle">Professional Services</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a class="nav-link is-active" href="/index.html" data-nav="home" data-i18n="nav.home">Home</a>
+
+          <div class="nav-dropdown" data-dropdown>
+            <button class="nav-link nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
+              <span data-i18n="nav.services">Services</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html" data-i18n="nav.services">
+                Services Overview
+              </a>
+              <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html" data-i18n="nav.submenu.logistics">
+                Logistics Management
+              </a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html" data-i18n="nav.submenu.itsupport">
+                IT Support Level I &amp; II
+              </a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html" data-i18n="nav.submenu.admin">
+                C-Level Admin Support
+              </a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html" data-i18n="nav.submenu.relations">
+                Customer Relations
+              </a>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/pages/about.html" data-nav="about" data-i18n="nav.about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers" data-i18n="nav.careers">Careers</a>
+          <a class="nav-link" href="/pages/contact.html" data-nav="contact" data-i18n="nav.contact">Contact</a>
+
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin" data-i18n="nav.signin">
+            Client Portal
+          </a>
+
+          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted" data-i18n="nav.getstarted">
+            Start Scaling
+          </a>
+
+          <div class="nav-tools" aria-label="Preferences">
+            <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
+              <span class="sr-only">Toggle theme</span>
+              <span aria-hidden="true">◐</span>
+            </button>
+
+            <button class="btn btn-ghost" type="button" id="langToggle" aria-pressed="false" title="Toggle language">
+              <span class="sr-only">Toggle language</span>
+              <span class="lang-pill" aria-hidden="true">EN</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Consent (links to the Consent page; modal comes later) -->
+    <section class="consent-bar" id="consentBar" hidden>
+      <div class="container consent-row">
+        <p class="consent-text" data-i18n="consent.banner">
+          By using this site and chatbot, you agree to our Privacy &amp; Consent terms.
+        </p>
+        <div class="consent-actions">
+          <a class="btn btn-ghost" href="/pages/consent.html" data-i18n="consent.review">Review</a>
+          <button class="btn btn-primary" type="button" id="consentAccept" data-i18n="consent.accept">Accept</button>
+        </div>
+      </div>
+    </section>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero">
+        <!-- 3D background mounts here -->
+        <div class="hero-3d" aria-hidden="true">
+          <canvas id="heroCanvas"></canvas>
+          <div class="hero-gradient-overlay" aria-hidden="true"></div>
+        </div>
+
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="badge" role="status">
+              <span class="badge-dot" aria-hidden="true"></span>
+              <span data-i18n="home.badge">Operational Excellence • Fractional Teams • Real Outcomes</span>
+            </div>
+
+            <h1 class="hero-title" data-i18n="home.title">
+              High-performance fractional operations for modern SMBs.
+            </h1>
+
+            <p class="hero-subtitle" data-i18n="home.subtitle">
+              Scale faster with a battle-tested operating system: logistics, IT support, customer relations, and executive admin —
+              delivered as a service.
+            </p>
+
+            <div class="hero-cta">
+              <a class="btn btn-primary btn-lg" href="/pages/get-started.html" data-i18n="home.ctaPrimary">Start Scaling</a>
+              <a class="btn btn-secondary btn-lg" href="/pages/services.html" data-i18n="home.ctaSecondary">Explore Services</a>
+            </div>
+
+            <div class="hero-trust">
+              <div class="trust-item">
+                <div class="trust-value">24/7</div>
+                <div class="trust-label" data-i18n="home.trust1">Coverage</div>
+              </div>
+              <div class="trust-item">
+                <div class="trust-value">&lt; 20ms</div>
+                <div class="trust-label" data-i18n="home.trust2">Response</div>
+              </div>
+              <div class="trust-item">
+                <div class="trust-value">SOC2</div>
+                <div class="trust-label" data-i18n="home.trust3">Aligned</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Highlights">
+            <div class="panel-card">
+              <h2 class="panel-title" data-i18n="home.panelTitle">What you get</h2>
+
+              <ul class="checklist">
+                <li data-i18n="home.panelItem1">Fast onboarding and clear KPIs</li>
+                <li data-i18n="home.panelItem2">Secure-by-default workflows</li>
+                <li data-i18n="home.panelItem3">Bilingual support (EN/ES)</li>
+                <li data-i18n="home.panelItem4">Continuous optimization</li>
+              </ul>
+
+              <a class="panel-link" href="/pages/services.html">
+                <span data-i18n="home.panelLink">See how it works</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- SERVICES PREVIEW -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title" data-i18n="home.servicesTitle">Core Services</h2>
+            <p class="section-subtitle" data-i18n="home.servicesSubtitle">
+              Modular support stacks that plug into your business without the overhead.
+            </p>
+          </div>
+
+          <div class="cards-grid">
+            <a class="card" href="/pages/logistics.html">
+              <div class="card-icon" aria-hidden="true">🚚</div>
+              <h3 class="card-title" data-i18n="services.logistics.title">Logistics Management</h3>
+              <p class="card-text" data-i18n="services.logistics.short">
+                Dispatch, tracking, SLAs, and continuous improvements.
+              </p>
+              <span class="card-cta" aria-hidden="true">Learn more →</span>
+            </a>
+
+            <a class="card" href="/pages/it-support.html">
+              <div class="card-icon" aria-hidden="true">🖥️</div>
+              <h3 class="card-title" data-i18n="services.itsupport.title">IT Support Level I &amp; II</h3>
+              <p class="card-text" data-i18n="services.itsupport.short">
+                Helpdesk, device triage, access control, and incident handling.
+              </p>
+              <span class="card-cta" aria-hidden="true">Learn more →</span>
+            </a>
+
+            <a class="card" href="/pages/customer-relations.html">
+              <div class="card-icon" aria-hidden="true">🤝</div>
+              <h3 class="card-title" data-i18n="services.relations.title">Customer Relations</h3>
+              <p class="card-text" data-i18n="services.relations.short">
+                Multi-channel support with measurable satisfaction gains.
+              </p>
+              <span class="card-cta" aria-hidden="true">Learn more →</span>
+            </a>
+
+            <a class="card" href="/pages/admin-support.html">
+              <div class="card-icon" aria-hidden="true">🧩</div>
+              <h3 class="card-title" data-i18n="services.admin.title">C-Level Admin Support</h3>
+              <p class="card-text" data-i18n="services.admin.short">
+                Executive calendars, inboxes, reporting, and coordination.
+              </p>
+              <span class="card-cta" aria-hidden="true">Learn more →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA STRIP -->
+      <section class="cta-strip">
+        <div class="container cta-row">
+          <div>
+            <h2 class="cta-title" data-i18n="home.ctaStripTitle">Ready to scale without chaos?</h2>
+            <p class="cta-subtitle" data-i18n="home.ctaStripSubtitle">
+              Start a pilot and get operational clarity in days — not months.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary btn-lg" href="/pages/get-started.html" data-i18n="home.ctaPrimary">Start Scaling</a>
+            <a class="btn btn-ghost btn-lg" href="/pages/contact.html" data-i18n="home.ctaContact">Contact</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-title">Gabriel Professional Services</div>
+          <div class="footer-note" data-i18n="footer.note">
+            Secure-by-design operational support for modern teams.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/pages/about.html" data-i18n="nav.about">About Us</a>
+          <a href="/pages/services.html" data-i18n="nav.services">Services</a>
+          <a href="/pages/careers.html" data-i18n="nav.careers">Careers</a>
+          <a href="/pages/contact.html" data-i18n="nav.contact">Contact</a>
+          <a href="/pages/privacy.html" data-i18n="footer.privacy">Privacy</a>
+          <a href="/pages/terms.html" data-i18n="footer.terms">Terms</a>
+          <a href="/pages/gdpr.html" data-i18n="footer.gdpr">GDPR</a>
+          <a href="/pages/consent.html" data-i18n="footer.consent">Privacy &amp; Consent</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span class="copyright">© <span id="year"></span> Gabriel</span>
+        </div>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="noscript">
+        This site works best with JavaScript enabled (for theme, language, and 3D effects).
+      </div>
+    </noscript>
+
+    <!-- App bootstrap (we’ll create next) -->
+    <script type="module" src="/assets/js/app.js"></script>
+  </body>
+</html>
 
