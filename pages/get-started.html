@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="description" content="Get Started — Gabriel Professional Services" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        form-action 'self';
+        img-src 'self' data: blob: https:;
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        connect-src 'self' https:;
+      "
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>Get Started · Gabriel Professional Services</title>
+
+    <style>
+      .page-wrap {
+        padding: 28px 0 72px;
+        background: radial-gradient(1200px 600px at 50% -10%, rgba(124,58,237,0.20), transparent 60%),
+                    radial-gradient(900px 520px at 10% 10%, rgba(147,51,234,0.16), transparent 55%),
+                    radial-gradient(900px 520px at 90% 12%, rgba(124,58,237,0.12), transparent 55%);
+      }
+
+      .gs-shell {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 14px;
+        align-items: stretch;
+      }
+
+      .gs-left {
+        border-radius: 26px;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.96), rgba(147, 51, 234, 0.96));
+        border: 1px solid rgba(255,255,255,0.14);
+        box-shadow: 0 28px 110px rgba(124, 58, 237, 0.26);
+        position: relative;
+        color: #fff;
+      }
+
+      .gs-left::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.08;
+        background-image:
+          linear-gradient(to right, #fff 1px, transparent 1px),
+          linear-gradient(to bottom, #fff 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+      }
+
+      .gs-left-inner {
+        position: relative;
+        z-index: 1;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .gs-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .gs-brand .mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.18);
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255,255,255,0.18);
+      }
+
+      .gs-brand .name {
+        font-size: 18px;
+        font-weight: 950;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+      }
+
+      .gs-brand .sub {
+        font-size: 12px;
+        font-weight: 750;
+        color: rgba(255,255,255,0.82);
+        margin-top: 2px;
+      }
+
+      .gs-left h1 {
+        margin: 10px 0 8px;
+        font-size: 26px;
+        font-weight: 950;
+        letter-spacing: -0.03em;
+      }
+
+      .gs-left p {
+        margin: 0 0 14px;
+        color: rgba(255,255,255,0.86);
+        font-weight: 650;
+      }
+
+      .perk-list {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .perk {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 12px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.16);
+      }
+
+      .perk .check {
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.18);
+        font-weight: 950;
+      }
+
+      .perk span {
+        font-weight: 800;
+        font-size: 13px;
+        color: rgba(255,255,255,0.92);
+      }
+
+      .gs-rating {
+        margin-top: auto;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255,255,255,0.16);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .avatars {
+        display: flex;
+        align-items: center;
+      }
+
+      .avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.22);
+        border: 2px solid rgba(124, 58, 237, 0.96);
+        margin-left: -10px;
+      }
+
+      .avatar:first-child { margin-left: 0; }
+
+      .gs-rating .text {
+        font-size: 12px;
+        font-weight: 750;
+        color: rgba(255,255,255,0.86);
+      }
+      .gs-rating .text strong { color: #fff; }
+
+      /* Right */
+      .gs-right {
+        border-radius: 26px;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+      }
+
+      .gs-right-inner {
+        padding: 20px;
+      }
+
+      .gs-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .gs-top h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 950;
+        letter-spacing: -0.02em;
+      }
+
+      .steps {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .step-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(124, 58, 237, 0.08);
+        border: 1px solid rgba(124, 58, 237, 0.14);
+        color: var(--muted);
+        font-weight: 900;
+        font-size: 12px;
+      }
+
+      .step-pill.is-active {
+        background: rgba(124, 58, 237, 0.16);
+        border-color: rgba(124, 58, 237, 0.28);
+        color: var(--text);
+      }
+
+      .gs-form {
+        margin-top: 14px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .field-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+
+      .field label {
+        font-weight: 900;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text);
+        outline: none;
+      }
+
+      .field textarea { min-height: 110px; resize: vertical; }
+
+      .help {
+        color: var(--muted-2);
+        font-size: 12px;
+        font-weight: 650;
+        margin-top: -2px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 4px;
+      }
+
+      .actions .left,
+      .actions .right { display: flex; gap: 10px; flex-wrap: wrap; }
+
+      .step {
+        display: none;
+      }
+
+      .step.is-active {
+        display: block;
+        animation: fadeIn 180ms ease;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(2px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Modal */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.55);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 9999;
+      }
+      .modal-backdrop.is-open { display: flex; }
+      .modal {
+        width: min(560px, 100%);
+        border-radius: 22px;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-lg);
+        padding: 18px;
+      }
+      .modal h3 { margin: 0 0 10px; font-size: 18px; font-weight: 950; }
+      .modal p { margin: 0 0 14px; color: var(--muted); font-weight: 650; }
+      .modal .modal-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+
+      @media (max-width: 980px) {
+        .gs-shell { grid-template-columns: 1fr; }
+        .field-row { grid-template-columns: 1fr; }
+        .gs-left-inner, .gs-right-inner { padding: 18px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-elevate-on-scroll="true">
+      <div class="container header-row">
+        <a class="brand" href="/index.html" aria-label="Go to Home">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="rocket-3d" id="rocketLogo" role="img" aria-label="3D Rocket logo"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">Gabriel</span>
+            <span class="brand-subtitle">Professional Services</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a class="nav-link" href="/index.html" data-nav="home">Home</a>
+
+          <div class="nav-dropdown" data-dropdown data-open="false">
+            <button class="nav-link nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Services</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html">Services Overview</a>
+              <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html">Logistics Management</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html">IT Support Level I &amp; II</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html">C-Level Admin Support</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html">Customer Relations</a>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/pages/about.html" data-nav="about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers">Careers</a>
+          <a class="nav-link" href="/pages/contact.html" data-nav="contact">Contact</a>
+
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin">Client Portal</a>
+          <a class="btn btn-primary is-active" href="/pages/get-started.html" data-nav="getstarted">Start Scaling</a>
+
+          <div class="nav-tools" aria-label="Preferences">
+            <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
+              <span class="sr-only">Toggle theme</span>
+              <span aria-hidden="true">◐</span>
+            </button>
+
+            <button class="btn btn-ghost" type="button" id="langToggle" aria-pressed="false" title="Toggle language">
+              <span class="sr-only">Toggle language</span>
+              <span class="lang-pill" aria-hidden="true">EN</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-wrap">
+        <div class="container">
+          <div class="gs-shell" aria-label="Get started wizard">
+            <!-- LEFT: Offer -->
+            <aside class="gs-left" aria-label="Pilot offer">
+              <div class="gs-left-inner">
+                <div class="gs-brand">
+                  <div class="mark" aria-hidden="true">🚀</div>
+                  <div>
+                    <div class="name">Gabriel</div>
+                    <div class="sub" data-lang-en="Professional Services" data-lang-es="Servicios Profesionales">Professional Services</div>
+                  </div>
+                </div>
+
+                <h1 data-lang-en="Start Your 14-Day Pilot" data-lang-es="Inicia tu Piloto de 14 Días">
+                  Start Your 14-Day Pilot
+                </h1>
+
+                <p
+                  data-lang-en="Experience the power of fractional operations with no long-term commitment."
+                  data-lang-es="Experimenta el poder de operaciones fraccionadas sin compromiso a largo plazo."
+                >
+                  Experience the power of fractional operations with no long-term commitment.
+                </p>
+
+                <ul class="perk-list" aria-label="Pilot perks">
+                  <li class="perk">
+                    <div class="check" aria-hidden="true">✓</div>
+                    <span data-lang-en="Dedicated Account Manager" data-lang-es="Gerente de cuenta dedicado">Dedicated Account Manager</span>
+                  </li>
+                  <li class="perk">
+                    <div class="check" aria-hidden="true">✓</div>
+                    <span data-lang-en="24/7 Support Access" data-lang-es="Acceso a soporte 24/7">24/7 Support Access</span>
+                  </li>
+                  <li class="perk">
+                    <div class="check" aria-hidden="true">✓</div>
+                    <span data-lang-en="Real-time Analytics" data-lang-es="Analítica en tiempo real">Real-time Analytics</span>
+                  </li>
+                  <li class="perk">
+                    <div class="check" aria-hidden="true">✓</div>
+                    <span data-lang-en="Custom Workflows" data-lang-es="Flujos de trabajo personalizados">Custom Workflows</span>
+                  </li>
+                </ul>
+
+                <div class="gs-rating" aria-label="Social proof">
+                  <div class="avatars" aria-hidden="true">
+                    <div class="avatar"></div>
+                    <div class="avatar"></div>
+                    <div class="avatar"></div>
+                  </div>
+                  <div class="text">
+                    <strong>4.9/5</strong>
+                    <span data-lang-en=" rating from 500+ enterprises" data-lang-es=" calificación de 500+ empresas">
+                      rating from 500+ enterprises
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <!-- RIGHT: Wizard -->
+            <section class="gs-right" aria-label="Create account form">
+              <div class="gs-right-inner">
+                <div class="gs-top">
+                  <h2 data-lang-en="Create Your Account" data-lang-es="Crea tu Cuenta">Create Your Account</h2>
+
+                  <div class="steps" aria-label="Steps">
+                    <span class="step-pill is-active" data-step-pill="1">
+                      <span data-lang-en="Step 1" data-lang-es="Paso 1">Step 1</span>
+                    </span>
+                    <span class="step-pill" data-step-pill="2">
+                      <span data-lang-en="Step 2" data-lang-es="Paso 2">Step 2</span>
+                    </span>
+                    <span class="step-pill" data-step-pill="3">
+                      <span data-lang-en="Step 3" data-lang-es="Paso 3">Step 3</span>
+                    </span>
+                  </div>
+                </div>
+
+                <form class="gs-form" id="gsForm" novalidate>
+                  <!-- STEP 1 -->
+                  <div class="step is-active" data-step="1">
+                    <div class="field-row">
+                      <div class="field">
+                        <label for="firstName" data-lang-en="First Name" data-lang-es="Nombre">First Name</label>
+                        <input id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+                      </div>
+
+                      <div class="field">
+                        <label for="lastName" data-lang-en="Last Name" data-lang-es="Apellido">Last Name</label>
+                        <input id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label for="workEmail" data-lang-en="Work Email" data-lang-es="Correo de trabajo">Work Email</label>
+                      <input id="workEmail" name="workEmail" type="email" autocomplete="email" inputmode="email" required />
+                      <div class="help"
+                        data-lang-en="We’ll use this to follow up on your pilot."
+                        data-lang-es="Usaremos esto para dar seguimiento a tu piloto.">
+                        We’ll use this to follow up on your pilot.
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label for="password" data-lang-en="Password" data-lang-es="Contraseña">Password</label>
+                      <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" />
+                      <div class="help"
+                        data-lang-en="Optional for now — portal access can be finalized after onboarding."
+                        data-lang-es="Opcional por ahora — el acceso al portal se finaliza después del onboarding.">
+                        Optional for now — portal access can be finalized after onboarding.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- STEP 2 -->
+                  <div class="step" data-step="2">
+                    <div class="field">
+                      <label for="company" data-lang-en="Company" data-lang-es="Empresa">Company</label>
+                      <input id="company" name="company" type="text" autocomplete="organization" required />
+                    </div>
+
+                    <div class="field-row">
+                      <div class="field">
+                        <label for="companySize" data-lang-en="Company Size" data-lang-es="Tamaño de empresa">Company Size</label>
+                        <select id="companySize" name="companySize" required>
+                          <option value="" selected disabled data-lang-en="Select..." data-lang-es="Seleccionar...">Select...</option>
+                          <option value="1-10">1–10</option>
+                          <option value="11-50">11–50</option>
+                          <option value="51-200">51–200</option>
+                          <option value="201-1000">201–1000</option>
+                          <option value="1000+">1000+</option>
+                        </select>
+                      </div>
+
+                      <div class="field">
+                        <label for="primaryInterest" data-lang-en="Primary Interest" data-lang-es="Interés principal">Primary Interest</label>
+                        <select id="primaryInterest" name="primaryInterest" required>
+                          <option value="" selected disabled data-lang-en="Select..." data-lang-es="Seleccionar...">Select...</option>
+                          <option value="logistics" data-lang-en="Logistics Management" data-lang-es="Gestión Logística">Logistics Management</option>
+                          <option value="itsupport" data-lang-en="IT Support" data-lang-es="Soporte TI">IT Support</option>
+                          <option value="admin" data-lang-en="Admin Support" data-lang-es="Soporte Administrativo">Admin Support</option>
+                          <option value="relations" data-lang-en="Customer Relations" data-lang-es="Relaciones con Clientes">Customer Relations</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label for="notes" data-lang-en="Notes" data-lang-es="Notas">Notes</label>
+                      <textarea id="notes" name="notes" placeholder=""></textarea>
+                      <div class="help"
+                        data-lang-en="Share scope, volumes, time zone, or urgency."
+                        data-lang-es="Comparte alcance, volúmenes, zona horaria o urgencia.">
+                        Share scope, volumes, time zone, or urgency.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- STEP 3 -->
+                  <div class="step" data-step="3">
+                    <div class="panel" style="padding: 16px; border-radius: 18px; border: 1px solid var(--border); background: var(--bg-elev);">
+                      <h3 style="margin:0 0 8px; font-size:14px; font-weight:950;"
+                        data-lang-en="Review & submit"
+                        data-lang-es="Revisar y enviar">
+                        Review & submit
+                      </h3>
+                      <p style="margin:0; color:var(--muted); font-weight:650; font-size:13px;"
+                        data-lang-en="We’ll confirm details and send next steps for your pilot."
+                        data-lang-es="Confirmaremos detalles y enviaremos los siguientes pasos para tu piloto.">
+                        We’ll confirm details and send next steps for your pilot.
+                      </p>
+
+                      <div id="review" style="margin-top: 12px; display:grid; gap:10px; font-size:13px; color:var(--muted); font-weight:700;"></div>
+                    </div>
+                  </div>
+
+                  <div class="actions" aria-label="Wizard actions">
+                    <div class="left">
+                      <a class="btn btn-ghost" href="/index.html" data-lang-en="Back to Home" data-lang-es="Volver al Inicio">Back to Home</a>
+                    </div>
+
+                    <div class="right">
+                      <button class="btn btn-ghost" type="button" id="backBtn" disabled
+                        data-lang-en="Back" data-lang-es="Atrás">
+                        Back
+                      </button>
+
+                      <button class="btn btn-primary" type="button" id="nextBtn"
+                        data-lang-en="Continue" data-lang-es="Continuar">
+                        Continue
+                      </button>
+
+                      <button class="btn btn-primary" type="submit" id="submitBtn" style="display:none;"
+                        data-lang-en="Create Account" data-lang-es="Crear Cuenta">
+                        Create Account
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="help" style="margin-top:-6px;"
+                    data-lang-en="Already have an account? Use Client Portal."
+                    data-lang-es="¿Ya tienes cuenta? Usa el Portal de Cliente.">
+                    Already have an account? Use Client Portal.
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-title">Gabriel Professional Services</div>
+          <div class="footer-note"
+            data-lang-en="Secure-by-design operational support for modern teams."
+            data-lang-es="Soporte operativo con seguridad desde el diseño.">
+            Secure-by-design operational support for modern teams.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/pages/about.html">About Us</a>
+          <a href="/pages/services.html">Services</a>
+          <a href="/pages/careers.html">Careers</a>
+          <a href="/pages/contact.html">Contact</a>
+          <a href="/pages/privacy.html">Privacy</a>
+          <a href="/pages/terms.html">Terms</a>
+          <a href="/pages/gdpr.html">GDPR</a>
+          <a href="/pages/consent.html">Privacy &amp; Consent</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span class="copyright">© <span id="year"></span> Gabriel</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal">
+        <h3 id="modalTitle" data-lang-en="Request received" data-lang-es="Solicitud recibida">Request received</h3>
+        <p
+          data-lang-en="Thanks! We’ll follow up with next steps for your pilot. If you want to add details, use Contact."
+          data-lang-es="¡Gracias! Te contactaremos con los siguientes pasos. Si quieres añadir detalles, usa Contacto."
+        >
+          Thanks! We’ll follow up with next steps for your pilot. If you want to add details, use Contact.
+        </p>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" type="button" id="closeModal" data-lang-en="Close" data-lang-es="Cerrar">Close</button>
+          <a class="btn btn-primary" href="/pages/contact.html" data-lang-en="Go to Contact" data-lang-es="Ir a Contacto">Go to Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/assets/js/app.js"></script>
+
+    <!-- Wizard logic (self-contained) -->
+    <script type="module">
+      const form = document.getElementById("gsForm");
+      const steps = Array.from(document.querySelectorAll(".step"));
+      const pills = Array.from(document.querySelectorAll("[data-step-pill]"));
+      const backBtn = document.getElementById("backBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const submitBtn = document.getElementById("submitBtn");
+      const review = document.getElementById("review");
+
+      const modalBackdrop = document.getElementById("modalBackdrop");
+      const closeModal = document.getElementById("closeModal");
+
+      let current = 1;
+
+      function setActiveStep(n) {
+        current = n;
+
+        steps.forEach((el) => el.classList.toggle("is-active", el.getAttribute("data-step") === String(n)));
+        pills.forEach((p) => p.classList.toggle("is-active", p.getAttribute("data-step-pill") === String(n)));
+
+        backBtn.disabled = n === 1;
+
+        const isLast = n === 3;
+        nextBtn.style.display = isLast ? "none" : "";
+        submitBtn.style.display = isLast ? "" : "none";
+
+        if (isLast) populateReview();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function requiredValidForStep(n) {
+        const stepEl = steps.find((s) => s.getAttribute("data-step") === String(n));
+        if (!stepEl) return true;
+
+        const required = Array.from(stepEl.querySelectorAll("[required]"));
+        let ok = true;
+
+        required.forEach((input) => {
+          if (!input.value || (input.type === "email" && !input.value.includes("@"))) ok = false;
+          input.setAttribute("aria-invalid", ok ? "false" : "true");
+        });
+
+        return ok;
+      }
+
+      function v(id) {
+        const el = document.getElementById(id);
+        return el ? (el.value || "").trim() : "";
+      }
+
+      function populateReview() {
+        const rows = [
+          ["Name", `${v("firstName")} ${v("lastName")}`.trim()],
+          ["Email", v("workEmail")],
+          ["Company", v("company")],
+          ["Company size", v("companySize")],
+          ["Primary interest", v("primaryInterest")],
+          ["Notes", v("notes") || "—"],
+        ];
+
+        review.innerHTML = rows
+          .map(([k, val]) => `<div><strong style="color:var(--text); font-weight:950;">${k}:</strong> ${escapeHtml(val)}</div>`)
+          .join("");
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      nextBtn.addEventListener("click", () => {
+        if (!requiredValidForStep(current)) return;
+        setActiveStep(Math.min(3, current + 1));
+      });
+
+      backBtn.addEventListener("click", () => setActiveStep(Math.max(1, current - 1)));
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!requiredValidForStep(current)) return;
+        populateReview();
+        modalBackdrop.classList.add("is-open");
+        closeModal.focus();
+      });
+
+      closeModal.addEventListener("click", () => modalBackdrop.classList.remove("is-open"));
+      modalBackdrop.addEventListener("click", (e) => {
+        if (e.target === modalBackdrop) modalBackdrop.classList.remove("is-open");
+      });
+
+      setActiveStep(1);
+    </script>
+
+    <!-- Page: EN/ES swap for data-lang-* fields -->
+    <script type="module">
+      const getLang = () => (document.documentElement.lang === "es" ? "es" : "en");
+
+      function syncLangText() {
+        const lang = getLang();
+        document.querySelectorAll("[data-lang-en][data-lang-es]").forEach((el) => {
+          const v = el.getAttribute(lang === "es" ? "data-lang-es" : "data-lang-en");
+          if (typeof v === "string") el.textContent = v;
+        });
+      }
+
+      const langBtn = document.getElementById("langToggle");
+      if (langBtn) langBtn.addEventListener("click", () => setTimeout(syncLangText, 0));
+
+      syncLangText();
+    </script>
+  </body>
+</html>
