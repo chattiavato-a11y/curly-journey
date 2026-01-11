@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="description" content="Services — Gabriel Professional Services" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        form-action 'self';
+        img-src 'self' data: blob: https:;
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        connect-src 'self' https:;
+      "
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+    <title>Services · Gabriel Professional Services</title>
+
+    <!-- Page-only styles (kept minimal; we can move these into styles.css later) -->
+    <style>
+      /* Services hero is a little shorter */
+      .hero.is-compact {
+        min-height: 62vh;
+      }
+
+      .services-intro {
+        padding: 40px 0 10px;
+      }
+
+      .services-grid-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+      }
+
+      .services-grid-head h2 {
+        margin: 0;
+      }
+
+      .services-grid-head p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        max-width: 70ch;
+      }
+
+      /* Random-purple hover behavior */
+      .card.is-purple-hover,
+      .card.is-purple-hover:hover {
+        transform: translateY(-3px) scale(1.02);
+        border-color: rgba(255, 255, 255, 0.22);
+      }
+      .card.is-purple-hover .card-title,
+      .card.is-purple-hover .card-cta,
+      .card.is-purple-hover .card-icon {
+        color: #fff;
+      }
+      .card.is-purple-hover .card-text {
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .card.is-purple-hover .card-icon {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      /* Detail sections */
+      .service-sections {
+        padding: 16px 0 92px;
+      }
+
+      .service-section {
+        padding: 72px 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .service-section.is-alt {
+        background: linear-gradient(180deg, rgba(124, 58, 237, 0.06), rgba(124, 58, 237, 0.00));
+      }
+
+      .service-section-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 22px;
+        align-items: start;
+      }
+
+      .service-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(124, 58, 237, 0.08);
+        border: 1px solid rgba(124, 58, 237, 0.16);
+        color: var(--muted);
+        font-weight: 900;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        margin-bottom: 12px;
+      }
+
+      .service-h3 {
+        margin: 0 0 10px;
+        font-size: clamp(22px, 2.0vw, 30px);
+        letter-spacing: -0.02em;
+        font-weight: 950;
+      }
+
+      .service-desc {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-weight: 650;
+        max-width: 70ch;
+      }
+
+      .service-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+
+      /* Modal */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(10px);
+        z-index: 200;
+      }
+
+      .modal-overlay[data-open="true"] {
+        display: flex;
+      }
+
+      .modal-card {
+        width: min(980px, 100%);
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border-radius: 22px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+      }
+
+      .modal-head {
+        padding: 20px 20px 16px;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.16), rgba(124, 58, 237, 0.05));
+        border-bottom: 1px solid rgba(124, 58, 237, 0.14);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .modal-title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .modal-summary {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-weight: 650;
+        max-width: 68ch;
+      }
+
+      .modal-body {
+        padding: 18px 20px 20px;
+        overflow: auto;
+      }
+
+      .modal-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.9fr;
+        gap: 16px;
+        align-items: start;
+      }
+
+      .mini-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .mini-card h4 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .mini-card p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+      }
+
+      .mini-list {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .stat {
+        background: rgba(124, 58, 237, 0.07);
+        border: 1px solid rgba(124, 58, 237, 0.14);
+        border-radius: 14px;
+        padding: 12px;
+      }
+      .stat .label {
+        font-weight: 900;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+      }
+      .stat .value {
+        margin-top: 6px;
+        font-weight: 950;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .modal-actions {
+        padding: 14px 20px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        background: var(--bg-elev);
+        backdrop-filter: blur(12px);
+      }
+
+      @media (max-width: 980px) {
+        .service-section-grid {
+          grid-template-columns: 1fr;
+        }
+        .modal-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-elevate-on-scroll="true">
+      <div class="container header-row">
+        <a class="brand" href="/index.html" aria-label="Go to Home">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="rocket-3d" id="rocketLogo" role="img" aria-label="3D Rocket logo"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">Gabriel</span>
+            <span class="brand-subtitle">Professional Services</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a class="nav-link" href="/index.html" data-nav="home">Home</a>
+
+          <div class="nav-dropdown" data-dropdown data-open="false">
+            <button class="nav-link nav-dropdown-btn is-active" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Services</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html">Services Overview</a>
+              <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html">Logistics Management</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html">IT Support Level I &amp; II</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html">C-Level Admin Support</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html">Customer Relations</a>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/pages/about.html" data-nav="about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers">Careers</a>
+          <a class="nav-link" href="/pages/contact.html" data-nav="contact">Contact</a>
+
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin">Client Portal</a>
+          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted">Start Scaling</a>
+
+          <div class="nav-tools" aria-label="Preferences">
+            <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
+              <span class="sr-only">Toggle theme</span>
+              <span aria-hidden="true">◐</span>
+            </button>
+
+            <button class="btn btn-ghost" type="button" id="langToggle" aria-pressed="false" title="Toggle language">
+              <span class="sr-only">Toggle language</span>
+              <span class="lang-pill" aria-hidden="true">EN</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero is-compact">
+        <div class="hero-3d" aria-hidden="true">
+          <canvas id="heroCanvas"></canvas>
+          <div class="hero-gradient-overlay" aria-hidden="true"></div>
+        </div>
+
+        <div class="container hero-grid" style="grid-template-columns: 1fr;">
+          <div class="hero-copy" style="max-width: 860px;">
+            <div class="badge" role="status">
+              <span class="badge-dot" aria-hidden="true"></span>
+              <span data-lang-en="SMB Growth & Scaling Experts" data-lang-es="Expertos en Crecimiento y Escala para PYMES">
+                SMB Growth & Scaling Experts
+              </span>
+            </div>
+
+            <h1
+              class="hero-title"
+              data-lang-en="Solutions for Scale"
+              data-lang-es="Soluciones para Escalar"
+              style="margin-bottom: 10px;"
+            >
+              Solutions for Scale
+            </h1>
+
+            <p
+              class="hero-subtitle"
+              data-lang-en="Every service we provide is designed to remove a bottleneck in your growth cycle."
+              data-lang-es="Cada servicio está diseñado para eliminar un cuello de botella en tu ciclo de crecimiento."
+              style="max-width: 70ch;"
+            >
+              Every service we provide is designed to remove a bottleneck in your growth cycle.
+            </p>
+
+            <div class="hero-cta">
+              <a class="btn btn-primary btn-lg" href="/pages/get-started.html" data-lang-en="Start Scaling" data-lang-es="Empezar">
+                Start Scaling
+              </a>
+              <a class="btn btn-secondary btn-lg" href="/pages/contact.html" data-lang-en="Contact Sales" data-lang-es="Contactar Ventas">
+                Contact Sales
+              </a>
+            </div>
+
+            <div class="services-intro">
+              <div class="services-grid-head">
+                <div>
+                  <h2 class="section-title" style="margin: 0;">
+                    <span data-lang-en="Explore our core services" data-lang-es="Explora nuestros servicios clave">
+                      Explore our core services
+                    </span>
+                  </h2>
+                  <p data-lang-en="Click “Learn More” to see detailed features, case studies, and a clear CTA."
+                     data-lang-es="Haz clic en “Ver Más” para ver funciones, casos de estudio y un CTA claro.">
+                    Click “Learn More” to see detailed features, case studies, and a clear CTA.
+                  </p>
+                </div>
+              </div>
+
+              <!-- SERVICES CARDS (hover = random royal purple) -->
+              <div class="cards-grid">
+                <article
+                  class="card service-card"
+                  data-service="logistics"
+                  data-hover-purple="true"
+                  aria-label="Logistics Management"
+                >
+                  <div class="card-icon" aria-hidden="true">🚚</div>
+                  <h3 class="card-title" data-lang-en="Logistics Management" data-lang-es="Gestión Logística">
+                    Logistics Management
+                  </h3>
+                  <p
+                    class="card-text"
+                    data-lang-en="Optimize your supply chain w...utions. We handle dispatching, tracking, and fleet management."
+                    data-lang-es="Optimice su cadena de suministr...tegrales. Manejamos despacho, seguimiento y gestión de flotas."
+                  >
+                    Optimize your supply chain w...utions. We handle dispatching, tracking, and fleet management.
+                  </p>
+
+                  <div class="service-actions">
+                    <button class="btn btn-secondary" type="button" data-open-modal="logistics"
+                      data-lang-en="Learn More" data-lang-es="Ver Más">
+                      Learn More
+                    </button>
+                    <a class="btn btn-ghost" href="/pages/logistics.html"
+                      data-lang-en="Open Page" data-lang-es="Abrir Página">
+                      Open Page
+                    </a>
+                  </div>
+                </article>
+
+                <article
+                  class="card service-card"
+                  data-service="itsupport"
+                  data-hover-purple="true"
+                  aria-label="IT Support Level I & II"
+                >
+                  <div class="card-icon" aria-hidden="true">🖥️</div>
+                  <h3 class="card-title" data-lang-en="IT Support Level I & II" data-lang-es="Soporte TI Nivel I y II">
+                    IT Support Level I &amp; II
+                  </h3>
+                  <p
+                    class="card-text"
+                    data-lang-en="Keep your business runnin...ort. Our experts resolve issues quickly and minimize downtime."
+                    data-lang-es="Mantenga su negocio funci...cnico 24/7. Nuestros expertos resuelven problemas rápidamente."
+                  >
+                    Keep your business runnin...ort. Our experts resolve issues quickly and minimize downtime.
+                  </p>
+
+                  <div class="service-actions">
+                    <button class="btn btn-secondary" type="button" data-open-modal="itsupport"
+                      data-lang-en="Learn More" data-lang-es="Ver Más">
+                      Learn More
+                    </button>
+                    <a class="btn btn-ghost" href="/pages/it-support.html"
+                      data-lang-en="Open Page" data-lang-es="Abrir Página">
+                      Open Page
+                    </a>
+                  </div>
+                </article>
+
+                <article
+                  class="card service-card"
+                  data-service="admin"
+                  data-hover-purple="true"
+                  aria-label="C-Level Admin Support"
+                >
+                  <div class="card-icon" aria-hidden="true">🧩</div>
+                  <h3 class="card-title" data-lang-en="C-Level Admin Support" data-lang-es="Soporte Admin Nivel C">
+                    C-Level Admin Support
+                  </h3>
+                  <p
+                    class="card-text"
+                    data-lang-en="Executive-level assistance desi.... We manage calendars, communications, and strategic projects."
+                    data-lang-es="Asistencia de nivel ejecutivo d...tionamos calendarios, comunicaciones y proyectos estratégicos."
+                  >
+                    Executive-level assistance desi.... We manage calendars, communications, and strategic projects.
+                  </p>
+
+                  <div class="service-actions">
+                    <button class="btn btn-secondary" type="button" data-open-modal="admin"
+                      data-lang-en="Learn More" data-lang-es="Ver Más">
+                      Learn More
+                    </button>
+                    <a class="btn btn-ghost" href="/pages/admin-support.html"
+                      data-lang-en="Open Page" data-lang-es="Abrir Página">
+                      Open Page
+                    </a>
+                  </div>
+                </article>
+
+                <article
+                  class="card service-card"
+                  data-service="relations"
+                  data-hover-purple="true"
+                  aria-label="Customer Relations"
+                >
+                  <div class="card-icon" aria-hidden="true">🤝</div>
+                  <h3 class="card-title" data-lang-en="Customer Relations" data-lang-es="Relaciones con Clientes">
+                    Customer Relations
+                  </h3>
+                  <p
+                    class="card-text"
+                    data-lang-en="Build lasting relationships wi...ated teams handle inquiries and outreach with professionalism."
+                    data-lang-es="Construya relaciones dura...stros equipos dedicados manejan consultas con profesionalismo."
+                  >
+                    Build lasting relationships wi...ated teams handle inquiries and outreach with professionalism.
+                  </p>
+
+                  <div class="service-actions">
+                    <button class="btn btn-secondary" type="button" data-open-modal="relations"
+                      data-lang-en="Learn More" data-lang-es="Ver Más">
+                      Learn More
+                    </button>
+                    <a class="btn btn-ghost" href="/pages/customer-relations.html"
+                      data-lang-en="Open Page" data-lang-es="Abrir Página">
+                      Open Page
+                    </a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICE DETAIL SECTIONS -->
+      <section class="service-sections">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title" data-lang-en="Deep dive" data-lang-es="Más detalle">Deep dive</h2>
+            <p
+              class="section-subtitle"
+              data-lang-en="Each service section includes key features and a quick CTA."
+              data-lang-es="Cada sección incluye funciones clave y un CTA rápido."
+            >
+              Each service section includes key features and a quick CTA.
+            </p>
+          </div>
+        </div>
+
+        <section class="service-section is-alt" id="logistics-section">
+          <div class="container service-section-grid">
+            <div>
+              <div class="service-kicker">
+                <span aria-hidden="true">🚚</span>
+                <span data-lang-en="Logistics" data-lang-es="Logística">Logistics</span>
+              </div>
+
+              <h3 class="service-h3" data-lang-en="Logistics Management" data-lang-es="Gestión Logística">
+                Logistics Management
+              </h3>
+
+              <p
+                class="service-desc"
+                data-lang-en="Drastically reduce delivery overhead via advanced mapping."
+                data-lang-es="Reduzca drásticamente los gastos de envío mediante el mapeo avanzado."
+              >
+                Drastically reduce delivery overhead via advanced mapping.
+              </p>
+
+              <ul class="checklist" style="margin-top: 16px;">
+                <li data-lang-en="Fleet Dispatching" data-lang-es="Despacho de Flotas">Fleet Dispatching</li>
+                <li data-lang-en="Route Optimization" data-lang-es="Optimización de Rutas">Route Optimization</li>
+                <li data-lang-en="Inventory Tracking" data-lang-es="Seguimiento de Inventario">Inventory Tracking</li>
+                <li data-lang-en="Driver Management" data-lang-es="Gestión de Conductores">Driver Management</li>
+              </ul>
+
+              <div class="service-actions">
+                <button class="btn btn-secondary" type="button" data-open-modal="logistics"
+                  data-lang-en="Learn More" data-lang-es="Ver Más">
+                  Learn More
+                </button>
+                <a class="btn btn-ghost" href="/pages/get-started.html"
+                  data-lang-en="Start Scaling" data-lang-es="Empezar">
+                  Start Scaling
+                </a>
+              </div>
+            </div>
+
+            <aside class="panel-card" aria-label="Logistics highlight" style="padding: 18px;">
+              <h4 class="panel-title" data-lang-en="Quick highlight" data-lang-es="Resumen rápido">Quick highlight</h4>
+              <p class="service-desc" style="margin: 0;">
+                <span
+                  data-lang-en="Our logistics management platform uses pro...most efficient routes, reducing fuel consumption by up to 20%."
+                  data-lang-es="Our logistics management platform uses pro...most efficient routes, reducing fuel consumption by up to 20%."
+                >
+                  Our logistics management platform uses pro...most efficient routes, reducing fuel consumption by up to 20%.
+                </span>
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="service-section" id="it-support-section">
+          <div class="container service-section-grid">
+            <div>
+              <div class="service-kicker">
+                <span aria-hidden="true">🖥️</span>
+                <span data-lang-en="IT Support" data-lang-es="Soporte TI">IT Support</span>
+              </div>
+
+              <h3 class="service-h3" data-lang-en="IT Support Level I & II" data-lang-es="Soporte TI Nivel I y II">
+                IT Support Level I &amp; II
+              </h3>
+
+              <p
+                class="service-desc"
+                data-lang-en="Expert technical assistance ... eliminate downtime."
+                data-lang-es="Asistencia técnica ... para eliminar tiempos de inactividad."
+              >
+                Expert technical assistance ... eliminate downtime.
+              </p>
+
+              <ul class="checklist" style="margin-top: 16px;">
+                <li data-lang-en="Help Desk Support" data-lang-es="Mesa de Ayuda">Help Desk Support</li>
+                <li data-lang-en="Network Troubleshooting" data-lang-es="Solución de Redes">Network Troubleshooting</li>
+                <li data-lang-en="Hardware Setup" data-lang-es="Configuración de Hardware">Hardware Setup</li>
+                <li data-lang-en="Security Hardening" data-lang-es="Seguridad">Security Hardening</li>
+              </ul>
+
+              <div class="service-actions">
+                <button class="btn btn-secondary" type="button" data-open-modal="itsupport"
+                  data-lang-en="Learn More" data-lang-es="Ver Más">
+                  Learn More
+                </button>
+                <a class="btn btn-ghost" href="/pages/contact.html"
+                  data-lang-en="Contact Sales" data-lang-es="Contactar Ventas">
+                  Contact Sales
+                </a>
+              </div>
+            </div>
+
+            <aside class="panel-card" aria-label="IT highlight" style="padding: 18px;">
+              <h4 class="panel-title" data-lang-en="Quick highlight" data-lang-es="Resumen rápido">Quick highlight</h4>
+              <p class="service-desc" style="margin: 0;">
+                <span
+                  data-lang-en="From password resets to network diagnosti...sionals are ready 24/7. Proactive monitoring ensures stability."
+                  data-lang-es="From password resets to network diagnosti...sionals are ready 24/7. Proactive monitoring ensures stability."
+                >
+                  From password resets to network diagnosti...sionals are ready 24/7. Proactive monitoring ensures stability.
+                </span>
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="service-section is-alt" id="admin-section">
+          <div class="container service-section-grid">
+            <div>
+              <div class="service-kicker">
+                <span aria-hidden="true">🧩</span>
+                <span data-lang-en="Admin Support" data-lang-es="Soporte Administrativo">Admin Support</span>
+              </div>
+
+              <h3 class="service-h3" data-lang-en="C-Level Admin Support" data-lang-es="Soporte Admin Nivel C">
+                C-Level Admin Support
+              </h3>
+
+              <p
+                class="service-desc"
+                data-lang-en="Executive assistance that scales with leadership complexity."
+                data-lang-es="Asistencia ejecutiva que escala con la complejidad del liderazgo."
+              >
+                Executive assistance that scales with leadership complexity.
+              </p>
+
+              <ul class="checklist" style="margin-top: 16px;">
+                <li data-lang-en="Calendar & Inbox Management" data-lang-es="Calendarios y Correos">Calendar &amp; Inbox Management</li>
+                <li data-lang-en="Travel & Itineraries" data-lang-es="Viajes e Itinerarios">Travel &amp; Itineraries</li>
+                <li data-lang-en="Executive Reporting" data-lang-es="Reportes Ejecutivos">Executive Reporting</li>
+                <li data-lang-en="Project Coordination" data-lang-es="Coordinación de Proyectos">Project Coordination</li>
+              </ul>
+
+              <div class="service-actions">
+                <button class="btn btn-secondary" type="button" data-open-modal="admin"
+                  data-lang-en="Learn More" data-lang-es="Ver Más">
+                  Learn More
+                </button>
+                <a class="btn btn-ghost" href="/pages/get-started.html"
+                  data-lang-en="Start Scaling" data-lang-es="Empezar">
+                  Start Scaling
+                </a>
+              </div>
+            </div>
+
+            <aside class="panel-card" aria-label="Admin highlight" style="padding: 18px;">
+              <h4 class="panel-title" data-lang-en="Quick highlight" data-lang-es="Resumen rápido">Quick highlight</h4>
+              <p class="service-desc" style="margin: 0;">
+                <span
+                  data-lang-en="Executive assistance beyond basic scheduling. Strategic planning for international itineraries."
+                  data-lang-es="Executive assistance beyond basic scheduling. Strategic planning for international itineraries."
+                >
+                  Executive assistance beyond basic scheduling. Strategic planning for international itineraries.
+                </span>
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="service-section" id="relations-section">
+          <div class="container service-section-grid">
+            <div>
+              <div class="service-kicker">
+                <span aria-hidden="true">🤝</span>
+                <span data-lang-en="Customer Relations" data-lang-es="Relaciones con Clientes">Customer Relations</span>
+              </div>
+
+              <h3 class="service-h3" data-lang-en="Customer Relations" data-lang-es="Relaciones con Clientes">
+                Customer Relations
+              </h3>
+
+              <p
+                class="service-desc"
+                data-lang-en="Human-centric customer care that builds loyalty."
+                data-lang-es="Atención centrada en el humano para generar lealtad."
+              >
+                Human-centric customer care that builds loyalty.
+              </p>
+
+              <ul class="checklist" style="margin-top: 16px;">
+                <li data-lang-en="Inbound Support" data-lang-es="Soporte de Entrada">Inbound Support</li>
+                <li data-lang-en="Client Onboarding" data-lang-es="Onboarding">Client Onboarding</li>
+                <li data-lang-en="Satisfaction Surveys" data-lang-es="Encuestas">Satisfaction Surveys</li>
+                <li data-lang-en="Conflict Resolution" data-lang-es="Conflictos">Conflict Resolution</li>
+              </ul>
+
+              <div class="service-actions">
+                <button class="btn btn-secondary" type="button" data-open-modal="relations"
+                  data-lang-en="Learn More" data-lang-es="Ver Más">
+                  Learn More
+                </button>
+                <a class="btn btn-ghost" href="/pages/contact.html"
+                  data-lang-en="Contact Sales" data-lang-es="Contactar Ventas">
+                  Contact Sales
+                </a>
+              </div>
+            </div>
+
+            <aside class="panel-card" aria-label="Relations highlight" style="padding: 18px;">
+              <h4 class="panel-title" data-lang-en="Quick highlight" data-lang-es="Resumen rápido">Quick highlight</h4>
+              <p class="service-desc" style="margin: 0;">
+                <span
+                  data-lang-en="Omnichannel support (voice, chat, email). Our agents embody your brand voice."
+                  data-lang-es="Omnichannel support (voice, chat, email). Our agents embody your brand voice."
+                >
+                  Omnichannel support (voice, chat, email). Our agents embody your brand voice.
+                </span>
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="cta-strip">
+          <div class="container cta-row">
+            <div>
+              <h2 class="cta-title" data-lang-en="Ready to remove your growth bottlenecks?" data-lang-es="¿Listo para eliminar cuellos de botella?">
+                Ready to remove your growth bottlenecks?
+              </h2>
+              <p class="cta-subtitle" data-lang-en="Schedule a consultation and get a clear plan." data-lang-es="Agenda una consulta y obtén un plan claro.">
+                Schedule a consultation and get a clear plan.
+              </p>
+            </div>
+            <div class="cta-actions">
+              <a class="btn btn-primary btn-lg" href="/pages/contact.html" data-lang-en="Schedule Your Consultation" data-lang-es="Agendar Consulta">
+                Schedule Your Consultation
+              </a>
+              <a class="btn btn-ghost btn-lg" href="/pages/get-started.html" data-lang-en="Start Scaling" data-lang-es="Empezar">
+                Start Scaling
+              </a>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="serviceModal" data-open="false" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-head">
+          <div>
+            <h3 class="modal-title" id="modalTitle">Service</h3>
+            <p class="modal-summary" id="modalSummary">Summary</p>
+          </div>
+          <button class="btn btn-ghost" type="button" id="modalCloseBtn" aria-label="Close">
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-grid">
+            <div class="mini-card">
+              <h4 id="modalWhatTitle" data-lang-en="What this includes" data-lang-es="Qué incluye">What this includes</h4>
+              <p id="modalExtended">—</p>
+
+              <h4 style="margin-top: 14px;" id="modalBenefitsTitle" data-lang-en="Key benefits" data-lang-es="Beneficios clave">
+                Key benefits
+              </h4>
+              <ul class="mini-list" id="modalBenefits"></ul>
+            </div>
+
+            <div class="mini-card">
+              <h4 id="modalCaseTitle" data-lang-en="Case study" data-lang-es="Caso de estudio">Case study</h4>
+              <p>
+                <strong id="modalCaseCompany">—</strong><br />
+                <span id="modalCaseResult">—</span>
+              </p>
+              <p style="margin-top: 10px;" id="modalCaseQuote">—</p>
+
+              <h4 style="margin-top: 14px;" id="modalStatsTitle" data-lang-en="Stats" data-lang-es="Métricas">Stats</h4>
+              <div class="stats-grid" id="modalStats"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-ghost" type="button" id="modalDismissBtn" data-lang-en="Dismiss" data-lang-es="Cerrar">
+            Dismiss
+          </button>
+          <a class="btn btn-primary" href="/pages/get-started.html" id="modalCtaBtn"
+             data-lang-en="Start Scaling" data-lang-es="Empezar">
+            Start Scaling
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-title">Gabriel Professional Services</div>
+          <div class="footer-note" data-lang-en="Secure-by-design operational support for modern teams."
+               data-lang-es="Soporte operativo con seguridad desde el diseño.">
+            Secure-by-design operational support for modern teams.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/pages/about.html">About Us</a>
+          <a href="/pages/services.html">Services</a>
+          <a href="/pages/careers.html">Careers</a>
+          <a href="/pages/contact.html">Contact</a>
+          <a href="/pages/privacy.html">Privacy</a>
+          <a href="/pages/terms.html">Terms</a>
+          <a href="/pages/gdpr.html">GDPR</a>
+          <a href="/pages/consent.html">Privacy &amp; Consent</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span class="copyright">© <span id="year"></span> Gabriel</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/app.js"></script>
+
+    <!-- Page logic: random purple hover + modal + EN/ES swap -->
+    <script type="module">
+      const modal = document.getElementById("serviceModal");
+      const closeBtn = document.getElementById("modalCloseBtn");
+      const dismissBtn = document.getElementById("modalDismissBtn");
+
+      const elTitle = document.getElementById("modalTitle");
+      const elSummary = document.getElementById("modalSummary");
+      const elExtended = document.getElementById("modalExtended");
+      const elBenefits = document.getElementById("modalBenefits");
+      const elCaseCompany = document.getElementById("modalCaseCompany");
+      const elCaseResult = document.getElementById("modalCaseResult");
+      const elCaseQuote = document.getElementById("modalCaseQuote");
+      const elStats = document.getElementById("modalStats");
+
+      const PURPLES = ["#4c1d95", "#5b21b6", "#6d28d9", "#7c3aed", "#8b5cf6", "#a78bfa"];
+
+      const SERVICES = {
+        logistics: {
+          title: { en: "Logistics Management", es: "Gestión Logística" },
+          summary: {
+            en: "Drastically reduce delivery overhead via advanced mapping.",
+            es: "Reduzca drásticamente los gastos de envío mediante el mapeo avanzado."
+          },
+          extended: {
+            en: "Our logistics management platform uses pro...most efficient routes, reducing fuel consumption by up to 20%.",
+            es: "Our logistics management platform uses pro...most efficient routes, reducing fuel consumption by up to 20%."
+          },
+          benefits: {
+            en: ["Real-time GPS tracking", "Automated maintenance scheduling", "Fuel cost analytics"],
+            es: ["Seguimiento GPS en tiempo real", "Mantenimiento automatizado", "Analítica de costos de combustible"]
+          },
+          caseStudy: {
+            company: "Global Retail Corp",
+            result: "20%...Reduction in OpEx",
+            quote: "Gabriel revolutionized our dispatch system. We handle 30% more volume."
+          },
+          stats: [
+            { label: "On-Time Rate", value: "99.8%" },
+            { label: "Active Drivers", value: "5k+" }
+          ]
+        },
+
+        itsupport: {
+          title: { en: "IT Support Level I & II", es: "Soporte TI Nivel I y II" },
+          summary: {
+            en: "Expert technical assistance ... eliminate downtime.",
+            es: "Asistencia técnica ... para eliminar tiempos de inactividad."
+          },
+          extended: {
+            en: "From password resets to network diagnosti...sionals are ready 24/7. Proactive monitoring ensures stability.",
+            es: "From password resets to network diagnosti...sionals are ready 24/7. Proactive monitoring ensures stability."
+          },
+          benefits: {
+            en: ["24/7 Help Desk", "Device & Access Management", "Incident Response"],
+            es: ["Mesa de ayuda 24/7", "Gestión de dispositivos y accesos", "Respuesta a incidentes"]
+          },
+          caseStudy: {
+            company: "FinTech Ops",
+            result: "60% Faster Resolution",
+            quote: "The peace of mind knowing Gabriel is watching is invaluable."
+          },
+          stats: [
+            { label: "Avg. First Reply", value: "< 2m" },
+            { label: "Coverage", value: "24/7" }
+          ]
+        },
+
+        admin: {
+          title: { en: "C-Level Admin Support", es: "Soporte Admin Nivel C" },
+          summary: {
+            en: "Executive assistance that scales with leadership complexity.",
+            es: "Asistencia ejecutiva que escala con la complejidad del liderazgo."
+          },
+          extended: {
+            en: "Executive assistance beyond basic scheduling. Strategic planning for international itineraries.",
+            es: "Executive assistance beyond basic scheduling. Strategic planning for international itineraries."
+          },
+          benefits: {
+            en: ["Calendar & Inbox Systems", "Executive Reporting", "Project Coordination"],
+            es: ["Sistemas de calendario y correo", "Reportes ejecutivos", "Coordinación de proyectos"]
+          },
+          caseStudy: {
+            company: "Healthcare Exec Team",
+            result: "2x Time Saved Weekly",
+            quote: "My assistant anticipates needs before I even articulate them."
+          },
+          stats: [
+            { label: "Weekly Hours Saved", value: "10+" },
+            { label: "Turnaround", value: "Same day" }
+          ]
+        },
+
+        relations: {
+          title: { en: "Customer Relations", es: "Relaciones con Clientes" },
+          summary: {
+            en: "Human-centric customer care that builds loyalty.",
+            es: "Atención centrada en el humano para generar lealtad."
+          },
+          extended: {
+            en: "Omnichannel support (voice, chat, email). Our agents embody your brand voice.",
+            es: "Soporte omnicanal (voz, chat, email). Nuestros agentes representan la voz de tu marca."
+          },
+          benefits: {
+            en: ["Omnichannel Support", "CRM Integration", "NPS Tracking"],
+            es: ["Soporte omnicanal", "Integración CRM", "Seguimiento NPS"]
+          },
+          caseStudy: {
+            company: "StreamLine SaaS",
+            result: "45% Increase in NPS",
+            quote: "Customer churn dropped significantly within 3 months."
+          },
+          stats: [
+            { label: "CSAT Score", value: "4.9/5" },
+            { label: "Languages", value: "12+" }
+          ]
+        }
+      };
+
+      const getLang = () => (document.documentElement.lang === "es" ? "es" : "en");
+
+      function syncLangText() {
+        const lang = getLang();
+        document.querySelectorAll("[data-lang-en][data-lang-es]").forEach((el) => {
+          const v = el.getAttribute(lang === "es" ? "data-lang-es" : "data-lang-en");
+          if (typeof v === "string") el.textContent = v;
+        });
+      }
+
+      function openModal(key) {
+        const lang = getLang();
+        const s = SERVICES[key];
+        if (!s) return;
+
+        elTitle.textContent = s.title[lang];
+        elSummary.textContent = s.summary[lang];
+        elExtended.textContent = s.extended[lang];
+
+        // Benefits
+        elBenefits.innerHTML = "";
+        (s.benefits[lang] || []).forEach((b) => {
+          const li = document.createElement("li");
+          li.textContent = b;
+          elBenefits.appendChild(li);
+        });
+
+        // Case
+        elCaseCompany.textContent = s.caseStudy.company;
+        elCaseResult.textContent = s.caseStudy.result;
+        elCaseQuote.textContent = `“${s.caseStudy.quote}”`;
+
+        // Stats
+        elStats.innerHTML = "";
+        (s.stats || []).forEach((st) => {
+          const d = document.createElement("div");
+          d.className = "stat";
+          d.innerHTML = `<div class="label">${st.label}</div><div class="value">${st.value}</div>`;
+          elStats.appendChild(d);
+        });
+
+        modal.setAttribute("data-open", "true");
+        modal.setAttribute("aria-hidden", "false");
+        closeBtn.focus();
+      }
+
+      function closeModal() {
+        modal.setAttribute("data-open", "false");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      // Open handlers
+      document.querySelectorAll("[data-open-modal]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const key = btn.getAttribute("data-open-modal");
+          openModal(key);
+        });
+      });
+
+      // Close handlers
+      closeBtn.addEventListener("click", closeModal);
+      dismissBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.getAttribute("data-open") === "true") closeModal();
+      });
+
+      // Random purple hover on cards
+      document.querySelectorAll("[data-hover-purple='true']").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          const color = PURPLES[Math.floor(Math.random() * PURPLES.length)];
+          card.classList.add("is-purple-hover");
+          card.style.background = color;
+          card.style.boxShadow = "0 18px 70px rgba(124, 58, 237, 0.25)";
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.classList.remove("is-purple-hover");
+          card.style.background = "";
+          card.style.boxShadow = "";
+        });
+      });
+
+      // React to language toggle (app.js changes documentElement.lang)
+      const langBtn = document.getElementById("langToggle");
+      if (langBtn) {
+        langBtn.addEventListener("click", () => {
+          // Allow app.js to apply lang first, then we sync custom strings
+          setTimeout(syncLangText, 0);
+        });
+      }
+
+      // Initial sync for this page
+      syncLangText();
+    </script>
+  </body>
+</html>
