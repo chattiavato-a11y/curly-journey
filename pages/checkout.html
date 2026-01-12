@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="description" content="Checkout — enroll in Learning Hub and confirm details." />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        form-action 'self';
+        img-src 'self' data: blob: https:;
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        connect-src 'self' https:;
+      "
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>Checkout · Gabriel Professional Services</title>
+
+    <style>
+      .wrap {
+        padding: 26px 0 72px;
+        background: radial-gradient(1200px 600px at 50% -10%, rgba(124,58,237,0.18), transparent 60%),
+                    radial-gradient(900px 520px at 10% 10%, rgba(147,51,234,0.14), transparent 55%),
+                    radial-gradient(900px 520px at 90% 12%, rgba(124,58,237,0.10), transparent 55%);
+      }
+
+      .hero {
+        border-radius: 28px;
+        padding: 18px;
+        background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(147,51,234,0.08));
+        border: 1px solid rgba(124,58,237,0.18);
+        box-shadow: var(--shadow-md);
+      }
+
+      .hero h1 {
+        margin: 0 0 6px;
+        font-size: 30px;
+        font-weight: 950;
+        letter-spacing: -0.03em;
+        line-height: 1.12;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.55;
+      }
+
+      .layout {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 12px;
+        align-items: start;
+      }
+
+      .panel {
+        border-radius: 26px;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+      }
+
+      .panel-head {
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .panel-head h2 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 950;
+        letter-spacing: -0.02em;
+      }
+
+      .panel-head .sub {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+      }
+
+      .panel-body {
+        padding: 18px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .card {
+        border-radius: 22px;
+        padding: 14px;
+        background: var(--bg-elev);
+        border: 1px solid var(--border);
+      }
+
+      /* Form */
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 6px;
+        padding: 0 2px;
+      }
+
+      .field input,
+      .field select {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text);
+        outline: none;
+      }
+
+      .field input:focus,
+      .field select:focus {
+        border-color: rgba(124,58,237,0.50);
+        box-shadow: 0 0 0 4px rgba(124,58,237,0.14);
+      }
+
+      .radios {
+        display: grid;
+        gap: 8px;
+      }
+
+      .radio {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 18px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        cursor: pointer;
+      }
+
+      .radio-left {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .radio input {
+        width: 18px;
+        height: 18px;
+      }
+
+      .radio .t {
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .radio .d {
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+        line-height: 1.45;
+        margin-top: 2px;
+      }
+
+      .price {
+        font-weight: 950;
+        color: var(--text);
+        white-space: nowrap;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 6px;
+      }
+
+      .fineprint {
+        border-radius: 18px;
+        padding: 12px;
+        background: rgba(124,58,237,0.08);
+        border: 1px solid rgba(124,58,237,0.16);
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.55;
+      }
+      .fineprint strong { color: var(--text); font-weight: 950; }
+
+      /* Summary */
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: baseline;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .summary-row:last-child { border-bottom: none; }
+
+      .summary-row .label {
+        color: var(--muted);
+        font-weight: 650;
+      }
+      .summary-row .value {
+        font-weight: 950;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        padding: 8px 10px;
+        border: 1px solid rgba(124,58,237,0.16);
+        background: rgba(124,58,237,0.08);
+        color: var(--muted);
+        font-weight: 950;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+      }
+
+      /* Modal */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.55);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 9999;
+      }
+      .modal-backdrop.is-open { display: flex; }
+      .modal {
+        width: min(640px, 100%);
+        border-radius: 22px;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-lg);
+        padding: 18px;
+      }
+      .modal h3 { margin: 0 0 10px; font-size: 18px; font-weight: 950; }
+      .modal p { margin: 0 0 14px; color: var(--muted); font-weight: 650; line-height: 1.55; }
+      .modal .modal-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+
+      @media (max-width: 980px) {
+        .layout { grid-template-columns: 1fr; }
+        .panel-head, .panel-body { padding: 16px; }
+      }
+      @media (max-width: 720px) {
+        .form-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-elevate-on-scroll="true">
+      <div class="container header-row">
+        <a class="brand" href="/index.html" aria-label="Go to Home">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="rocket-3d" id="rocketLogo" role="img" aria-label="3D Rocket logo"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">Gabriel</span>
+            <span class="brand-subtitle">Professional Services</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a class="nav-link" href="/index.html" data-nav="home">Home</a>
+
+          <div class="nav-dropdown" data-dropdown data-open="false">
+            <button class="nav-link nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Services</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html">Services Overview</a>
+              <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html">Logistics Management</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html">IT Support Level I &amp; II</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html">C-Level Admin Support</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html">Customer Relations</a>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/pages/about.html" data-nav="about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers">Careers</a>
+          <a class="nav-link" href="/pages/contact.html" data-nav="contact">Contact</a>
+
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin">Client Portal</a>
+          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted">Start Scaling</a>
+
+          <div class="nav-tools" aria-label="Preferences">
+            <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
+              <span class="sr-only">Toggle theme</span>
+              <span aria-hidden="true">◐</span>
+            </button>
+
+            <button class="btn btn-ghost" type="button" id="langToggle" aria-pressed="false" title="Toggle language">
+              <span class="sr-only">Toggle language</span>
+              <span class="lang-pill" aria-hidden="true">EN</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="wrap">
+        <div class="container">
+          <div class="hero" aria-label="Checkout hero">
+            <div class="pill" id="checkoutPill">Learning · Checkout</div>
+            <h1 id="title">Checkout</h1>
+            <p id="subtitle">
+              Confirm your enrollment and choose your plan.
+            </p>
+          </div>
+
+          <div class="layout" aria-label="Checkout layout">
+            <!-- LEFT: DETAILS -->
+            <section class="panel" aria-label="Checkout details">
+              <div class="panel-head">
+                <h2 data-lang-en="Enrollment details" data-lang-es="Detalles de inscripción">Enrollment details</h2>
+                <p class="sub" data-lang-en="This is a demo checkout UI (no payment processed)." data-lang-es="Checkout demo (no se procesa pago).">
+                  This is a demo checkout UI (no payment processed).
+                </p>
+              </div>
+
+              <div class="panel-body">
+                <div class="card" aria-label="Account and contact information">
+                  <div class="form-grid">
+                    <div class="field">
+                      <label for="fullName" data-lang-en="Full Name" data-lang-es="Nombre Completo">Full Name</label>
+                      <input id="fullName" name="fullName" type="text" required autocomplete="name" placeholder="John Smith" />
+                    </div>
+
+                    <div class="field">
+                      <label for="email" data-lang-en="Email" data-lang-es="Email">Email</label>
+                      <input id="email" name="email" type="email" required autocomplete="email" placeholder="john@company.com" />
+                    </div>
+
+                    <div class="field">
+                      <label for="country" data-lang-en="Country" data-lang-es="País">Country</label>
+                      <select id="country" name="country" required>
+                        <option value="" data-lang-en="Select country" data-lang-es="Selecciona país">Select country</option>
+                        <option value="US">United States</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="EC">Ecuador</option>
+                        <option value="ES">Spain</option>
+                        <option value="MX">Mexico</option>
+                        <option value="CA">Canada</option>
+                      </select>
+                    </div>
+
+                    <div class="field">
+                      <label for="topic" data-lang-en="Topic" data-lang-es="Tema">Topic</label>
+                      <select id="topic" name="topic" required></select>
+                    </div>
+                  </div>
+
+                  <div style="margin-top:10px" class="fineprint" role="note">
+                    <strong data-lang-en="Privacy reminder:" data-lang-es="Recordatorio de privacidad:">Privacy reminder:</strong>
+                    <span
+                      data-lang-en=" Please do not enter sensitive information (IDs, banking details, passwords)."
+                      data-lang-es=" No ingreses información sensible (IDs, datos bancarios, contraseñas).">
+                      Please do not enter sensitive information (IDs, banking details, passwords).
+                    </span>
+                  </div>
+                </div>
+
+                <div class="card" aria-label="Plan selection">
+                  <div class="panel-head" style="padding:0 0 12px; border:0;">
+                    <h2 data-lang-en="Choose a plan" data-lang-es="Elige un plan">Choose a plan</h2>
+                    <p class="sub" data-lang-en="You can change later." data-lang-es="Puedes cambiar después.">You can change later.</p>
+                  </div>
+
+                  <div class="radios" role="radiogroup" aria-label="Plan options">
+                    <label class="radio" for="planBasic">
+                      <div class="radio-left">
+                        <input id="planBasic" type="radio" name="plan" value="basic" checked />
+                        <div>
+                          <div class="t" data-lang-en="Basic" data-lang-es="Básico">Basic</div>
+                          <div class="d"
+                            data-lang-en="Starter templates + 1 guided track."
+                            data-lang-es="Plantillas iniciales + 1 ruta guiada.">
+                            Starter templates + 1 guided track.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="price" data-price="basic">$39</div>
+                    </label>
+
+                    <label class="radio" for="planPro">
+                      <div class="radio-left">
+                        <input id="planPro" type="radio" name="plan" value="pro" />
+                        <div>
+                          <div class="t" data-lang-en="Pro" data-lang-es="Pro">Pro</div>
+                          <div class="d"
+                            data-lang-en="All tracks + weekly executive brief template pack."
+                            data-lang-es="Todas las rutas + pack de brief ejecutivo semanal.">
+                            All tracks + weekly executive brief template pack.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="price" data-price="pro">$99</div>
+                    </label>
+
+                    <label class="radio" for="planTeam">
+                      <div class="radio-left">
+                        <input id="planTeam" type="radio" name="plan" value="team" />
+                        <div>
+                          <div class="t" data-lang-en="Team" data-lang-es="Equipo">Team</div>
+                          <div class="d"
+                            data-lang-en="Multi-user access + onboarding pack for managers."
+                            data-lang-es="Acceso multiusuario + pack de onboarding para managers.">
+                            Multi-user access + onboarding pack for managers.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="price" data-price="team">$199</div>
+                    </label>
+                  </div>
+
+                  <div class="actions">
+                    <button class="btn btn-primary" type="button" id="payBtn"
+                      data-lang-en="Complete Enrollment"
+                      data-lang-es="Completar Inscripción">
+                      Complete Enrollment
+                    </button>
+
+                    <a class="btn btn-ghost" href="/pages/learning.html"
+                      data-lang-en="Back to Learning"
+                      data-lang-es="Volver a Aprendizaje">
+                      Back to Learning
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- RIGHT: SUMMARY -->
+            <aside class="panel" aria-label="Order summary">
+              <div class="panel-head">
+                <h2 data-lang-en="Summary" data-lang-es="Resumen">Summary</h2>
+                <p class="sub" data-lang-en="Review your selections." data-lang-es="Revisa tus selecciones.">
+                  Review your selections.
+                </p>
+              </div>
+
+              <div class="panel-body">
+                <div class="card" aria-label="Summary details">
+                  <div class="summary-row">
+                    <div class="label" data-lang-en="Program" data-lang-es="Programa">Program</div>
+                    <div class="value">Learning Hub</div>
+                  </div>
+
+                  <div class="summary-row">
+                    <div class="label" data-lang-en="Topic" data-lang-es="Tema">Topic</div>
+                    <div class="value" id="sumTopic">—</div>
+                  </div>
+
+                  <div class="summary-row">
+                    <div class="label" data-lang-en="Plan" data-lang-es="Plan">Plan</div>
+                    <div class="value" id="sumPlan">Basic</div>
+                  </div>
+
+                  <div class="summary-row">
+                    <div class="label" data-lang-en="Subtotal" data-lang-es="Subtotal">Subtotal</div>
+                    <div class="value" id="sumSubtotal">$39</div>
+                  </div>
+
+                  <div class="summary-row">
+                    <div class="label" data-lang-en="Estimated tax" data-lang-es="Impuesto estimado">Estimated tax</div>
+                    <div class="value" id="sumTax">$0</div>
+                  </div>
+
+                  <div class="summary-row">
+                    <div class="label" data-lang-en="Total" data-lang-es="Total">Total</div>
+                    <div class="value" id="sumTotal">$39</div>
+                  </div>
+                </div>
+
+                <div class="fineprint" role="note">
+                  <strong data-lang-en="Demo checkout:" data-lang-es="Checkout demo:">Demo checkout:</strong>
+                  <span
+                    data-lang-en=" This page does not process payments. Connect Stripe later when you’re ready."
+                    data-lang-es=" Esta página no procesa pagos. Conecta Stripe más adelante cuando estés listo.">
+                    This page does not process payments. Connect Stripe later when you’re ready.
+                  </span>
+                </div>
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                  <a class="btn btn-primary" href="/pages/contact.html"
+                    data-lang-en="Talk to Sales"
+                    data-lang-es="Hablar con Ventas">Talk to Sales</a>
+                  <a class="btn btn-ghost" href="/pages/terms.html"
+                    data-lang-en="Terms"
+                    data-lang-es="Términos">Terms</a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-title">Gabriel Professional Services</div>
+          <div class="footer-note"
+            data-lang-en="Secure-by-design operational support for modern teams."
+            data-lang-es="Soporte operativo con seguridad desde el diseño.">
+            Secure-by-design operational support for modern teams.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/pages/about.html">About Us</a>
+          <a href="/pages/services.html">Services</a>
+          <a href="/pages/careers.html">Careers</a>
+          <a href="/pages/contact.html">Contact</a>
+          <a href="/pages/blog.html">Blog</a>
+          <a href="/pages/learning.html">Learning</a>
+          <a href="/pages/checkout.html">Checkout</a>
+          <a href="/pages/privacy.html">Privacy</a>
+          <a href="/pages/terms.html">Terms</a>
+          <a href="/pages/gdpr.html">GDPR</a>
+          <a href="/pages/consent.html">Privacy &amp; Consent</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span class="copyright">© <span id="year"></span> Gabriel</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal">
+        <h3 id="modalTitle"
+          data-lang-en="Enrollment submitted"
+          data-lang-es="Inscripción enviada">Enrollment submitted</h3>
+        <p id="modalText"
+          data-lang-en="This is a demo checkout. Your selection was captured locally for UI flow."
+          data-lang-es="Este es un checkout demo. Tu selección se guardó localmente para el flujo de UI.">
+          This is a demo checkout. Your selection was captured locally for UI flow.
+        </p>
+        <p
+          data-lang-en="Next step: contact us to connect payments and activate access."
+          data-lang-es="Siguiente paso: contáctanos para conectar pagos y activar acceso.">
+          Next step: contact us to connect payments and activate access.
+        </p>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" type="button" id="closeModal"
+            data-lang-en="Close"
+            data-lang-es="Cerrar">Close</button>
+          <a class="btn btn-primary" href="/pages/contact.html"
+            data-lang-en="Contact"
+            data-lang-es="Contacto">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/assets/js/app.js"></script>
+
+    <script type="module">
+      const TOPICS = {
+        en: [
+          "Operations Playbooks",
+          "Customer Success Systems",
+          "Cybersecurity Foundations",
+          "Logistics & Routing",
+          "Executive Admin Cadence",
+          "Dashboards & Reporting"
+        ],
+        es: [
+          "Playbooks de Operaciones",
+          "Sistemas de Éxito del Cliente",
+          "Fundamentos de Ciberseguridad",
+          "Logística y Ruteo",
+          "Cadencia de Asistencia Ejecutiva",
+          "Dashboards y Reportes"
+        ]
+      };
+
+      const PRICES = { basic: 39, pro: 99, team: 199 };
+
+      const topicSel = document.getElementById("topic");
+      const sumTopic = document.getElementById("sumTopic");
+      const sumPlan = document.getElementById("sumPlan");
+      const sumSubtotal = document.getElementById("sumSubtotal");
+      const sumTax = document.getElementById("sumTax");
+      const sumTotal = document.getElementById("sumTotal");
+
+      const payBtn = document.getElementById("payBtn");
+
+      // Modal
+      const modalBackdrop = document.getElementById("modalBackdrop");
+      const closeModal = document.getElementById("closeModal");
+      const open = () => { modalBackdrop.classList.add("is-open"); closeModal.focus(); };
+      const close = () => modalBackdrop.classList.remove("is-open");
+      closeModal.addEventListener("click", close);
+      modalBackdrop.addEventListener("click", (e) => { if (e.target === modalBackdrop) close(); });
+
+      const getLang = () => (document.documentElement.lang === "es" ? "es" : "en");
+
+      function syncLangText() {
+        const lang = getLang();
+        document.querySelectorAll("[data-lang-en][data-lang-es]").forEach((node) => {
+          const v = node.getAttribute(lang === "es" ? "data-lang-es" : "data-lang-en");
+          if (typeof v === "string") node.textContent = v;
+        });
+      }
+
+      function renderTopics() {
+        const lang = getLang();
+        const list = TOPICS[lang] || TOPICS.en;
+
+        topicSel.innerHTML = "";
+        const opt0 = document.createElement("option");
+        opt0.value = "";
+        opt0.textContent = lang === "es" ? "Selecciona tema" : "Select topic";
+        topicSel.appendChild(opt0);
+
+        list.forEach((t) => {
+          const opt = document.createElement("option");
+          opt.value = t;
+          opt.textContent = t;
+          topicSel.appendChild(opt);
+        });
+
+        // restore from localStorage if present
+        try {
+          const saved = localStorage.getItem("checkout_topic");
+          if (saved) topicSel.value = saved;
+        } catch {}
+
+        setSummary();
+      }
+
+      function getSelectedPlan() {
+        const el = document.querySelector('input[name="plan"]:checked');
+        return el ? el.value : "basic";
+      }
+
+      function planLabel(plan) {
+        const lang = getLang();
+        if (lang === "es") {
+          if (plan === "basic") return "Básico";
+          if (plan === "pro") return "Pro";
+          if (plan === "team") return "Equipo";
+        }
+        if (plan === "basic") return "Basic";
+        if (plan === "pro") return "Pro";
+        if (plan === "team") return "Team";
+        return plan;
+      }
+
+      function formatMoney(n) {
+        // display as USD-like for UI; real payments later
+        return `$${Number(n).toFixed(0)}`;
+      }
+
+      function setSummary() {
+        const plan = getSelectedPlan();
+        const price = PRICES[plan] ?? 0;
+        const topic = topicSel.value || "—";
+
+        sumPlan.textContent = planLabel(plan);
+        sumTopic.textContent = topic;
+
+        // demo tax = 0
+        sumSubtotal.textContent = formatMoney(price);
+        sumTax.textContent = formatMoney(0);
+        sumTotal.textContent = formatMoney(price);
+      }
+
+      topicSel.addEventListener("change", () => {
+        try { localStorage.setItem("checkout_topic", topicSel.value); } catch {}
+        setSummary();
+      });
+
+      document.querySelectorAll('input[name="plan"]').forEach((r) => {
+        r.addEventListener("change", () => {
+          try { localStorage.setItem("checkout_plan", getSelectedPlan()); } catch {}
+          setSummary();
+        });
+      });
+
+      // restore plan
+      try {
+        const savedPlan = localStorage.getItem("checkout_plan");
+        if (savedPlan && document.querySelector(`input[name="plan"][value="${savedPlan}"]`)) {
+          document.querySelector(`input[name="plan"][value="${savedPlan}"]`).checked = true;
+        }
+      } catch {}
+
+      payBtn.addEventListener("click", () => {
+        // UI-only: validate minimal required inputs
+        const fullName = document.getElementById("fullName");
+        const email = document.getElementById("email");
+        const country = document.getElementById("country");
+
+        const ok =
+          fullName.value.trim().length >= 2 &&
+          email.value.includes("@") &&
+          country.value &&
+          topicSel.value;
+
+        if (!ok) {
+          const lang = getLang();
+          const msg = lang === "es"
+            ? "Completa nombre, email, país y tema antes de continuar."
+            : "Complete name, email, country, and topic before continuing.";
+          alert(msg);
+          return;
+        }
+
+        // store demo “order”
+        try {
+          localStorage.setItem("checkout_demo", JSON.stringify({
+            name: fullName.value.trim(),
+            email: email.value.trim(),
+            country: country.value,
+            topic: topicSel.value,
+            plan: getSelectedPlan()
+          }));
+        } catch {}
+
+        open();
+      });
+
+      // React to language toggle from app.js (it flips <html lang>)
+      const langBtn = document.getElementById("langToggle");
+      if (langBtn) {
+        langBtn.addEventListener("click", () => {
+          setTimeout(() => {
+            renderTopics();
+            syncLangText();
+          }, 0);
+        });
+      }
+
+      renderTopics();
+      syncLangText();
+    </script>
+  </body>
+</html>
