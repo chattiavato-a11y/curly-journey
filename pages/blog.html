@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="description" content="Insights & Innovation — Blog" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        form-action 'self';
+        img-src 'self' data: blob: https:;
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        connect-src 'self' https:;
+      "
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>Blog · Insights & Innovation</title>
+
+    <style>
+      .blog-wrap {
+        padding: 26px 0 72px;
+        background: radial-gradient(1200px 600px at 50% -10%, rgba(124,58,237,0.18), transparent 60%),
+                    radial-gradient(900px 520px at 10% 10%, rgba(147,51,234,0.14), transparent 55%),
+                    radial-gradient(900px 520px at 90% 12%, rgba(124,58,237,0.10), transparent 55%);
+      }
+
+      .hero {
+        border-radius: 28px;
+        padding: 18px;
+        background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(147,51,234,0.08));
+        border: 1px solid rgba(124,58,237,0.18);
+        box-shadow: var(--shadow-md);
+      }
+
+      .hero h1 {
+        margin: 0 0 6px;
+        font-size: 26px;
+        font-weight: 950;
+        letter-spacing: -0.03em;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.55;
+      }
+
+      .toolbar {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .chip {
+        border-radius: 999px;
+        padding: 8px 10px;
+        border: 1px solid rgba(124,58,237,0.16);
+        background: rgba(124,58,237,0.08);
+        color: var(--muted);
+        font-weight: 950;
+        font-size: 12px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .chip[aria-pressed="true"] {
+        background: rgba(124,58,237,0.16);
+        border-color: rgba(124,58,237,0.28);
+        color: var(--text);
+      }
+
+      .search {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex: 1 1 280px;
+        justify-content: flex-end;
+        min-width: 240px;
+      }
+
+      .search label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .search input {
+        width: min(420px, 100%);
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text);
+        outline: none;
+      }
+
+      .grid {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .card {
+        border-radius: 26px;
+        overflow: hidden;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-md);
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(124,58,237,0.24);
+      }
+
+      .card-top {
+        height: 160px;
+        background: linear-gradient(135deg, rgba(124,58,237,0.95), rgba(59,130,246,0.9));
+        position: relative;
+      }
+
+      .badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        border-radius: 999px;
+        padding: 6px 10px;
+        background: rgba(255,255,255,0.92);
+        border: 1px solid rgba(255,255,255,0.18);
+        color: rgba(20,20,20,0.92);
+        font-weight: 950;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .card-body {
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .meta {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        color: var(--muted-2);
+        font-weight: 800;
+        font-size: 12px;
+      }
+
+      .meta .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 999px;
+        background: rgba(124,58,237,0.40);
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 950;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.55;
+        font-size: 13px;
+      }
+
+      .card-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 2px;
+      }
+
+      .read {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        font-weight: 950;
+        font-size: 13px;
+        color: rgba(124,58,237,0.95);
+        text-decoration: none;
+      }
+
+      .read:hover { text-decoration: underline; }
+
+      .empty {
+        margin-top: 14px;
+        border-radius: 18px;
+        padding: 14px;
+        background: var(--bg-elev);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.55;
+        display: none;
+      }
+
+      @media (max-width: 1100px) {
+        .grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 720px) {
+        .grid { grid-template-columns: 1fr; }
+        .search { justify-content: stretch; width: 100%; }
+        .search input { width: 100%; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-elevate-on-scroll="true">
+      <div class="container header-row">
+        <a class="brand" href="/index.html" aria-label="Go to Home">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="rocket-3d" id="rocketLogo" role="img" aria-label="3D Rocket logo"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">Gabriel</span>
+            <span class="brand-subtitle">Professional Services</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a class="nav-link" href="/index.html" data-nav="home">Home</a>
+
+          <div class="nav-dropdown" data-dropdown data-open="false">
+            <button class="nav-link nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Services</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html">Services Overview</a>
+              <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html">Logistics Management</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html">IT Support Level I &amp; II</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html">C-Level Admin Support</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html">Customer Relations</a>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/pages/about.html" data-nav="about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers">Careers</a>
+          <a class="nav-link" href="/pages/contact.html" data-nav="contact">Contact</a>
+
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin">Client Portal</a>
+          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted">Start Scaling</a>
+
+          <div class="nav-tools" aria-label="Preferences">
+            <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
+              <span class="sr-only">Toggle theme</span>
+              <span aria-hidden="true">◐</span>
+            </button>
+
+            <button class="btn btn-ghost" type="button" id="langToggle" aria-pressed="false" title="Toggle language">
+              <span class="sr-only">Toggle language</span>
+              <span class="lang-pill" aria-hidden="true">EN</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="blog-wrap">
+        <div class="container">
+          <div class="hero" aria-label="Blog hero">
+            <h1 id="heroTitle">Insights &amp; Innovation</h1>
+            <p id="heroSubtitle">
+              Leading the conversation on the future of fractional operations.
+            </p>
+
+            <div class="toolbar" aria-label="Blog filters">
+              <div class="chips" id="categoryChips" aria-label="Categories"></div>
+
+              <div class="search" aria-label="Search posts">
+                <label for="searchInput">Search</label>
+                <input
+                  id="searchInput"
+                  name="search"
+                  type="search"
+                  autocomplete="off"
+                  placeholder="Search posts…"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid" id="postsGrid" aria-label="Blog posts"></div>
+
+          <div class="empty" id="emptyState" role="status" aria-live="polite">
+            <span data-lang-en="No posts found. Try another category or search term."
+                  data-lang-es="No se encontraron artículos. Prueba otra categoría o término de búsqueda.">
+              No posts found. Try another category or search term.
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-title">Gabriel Professional Services</div>
+          <div class="footer-note"
+            data-lang-en="Secure-by-design operational support for modern teams."
+            data-lang-es="Soporte operativo con seguridad desde el diseño.">
+            Secure-by-design operational support for modern teams.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/pages/about.html">About Us</a>
+          <a href="/pages/services.html">Services</a>
+          <a href="/pages/careers.html">Careers</a>
+          <a href="/pages/contact.html">Contact</a>
+          <a href="/pages/blog.html">Blog</a>
+          <a href="/pages/privacy.html">Privacy</a>
+          <a href="/pages/terms.html">Terms</a>
+          <a href="/pages/gdpr.html">GDPR</a>
+          <a href="/pages/consent.html">Privacy &amp; Consent</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span class="copyright">© <span id="year"></span> Gabriel</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/app.js"></script>
+
+    <script type="module">
+      const BLOG_DATA = {
+        en: {
+          heroTitle: "Insights & Innovation",
+          heroSubtitle: "Leading the conversation on the future of fractional operations.",
+          categories: ["All", "Operations", "Growth", "Technology"],
+          readMore: "Read Article",
+          posts: [
+            {
+              title: "The Future of Fractional Ops",
+              category: "Operations",
+              date: "Feb 12, 2026",
+              excerpt: "How SMBs are leveraging fractional teams to compete with enterprises."
+            },
+            {
+              title: "Logistics Mapping in 2026",
+              category: "Technology",
+              date: "Jan 28, 2026",
+              excerpt: "New AI-driven routing protocols are saving fleets thousands in fuel costs."
+            },
+            {
+              title: "Scaling Customer Success",
+              category: "Growth",
+              date: "Jan 15, 2026",
+              excerpt: "The art of maintaining human-centric support during rapid user acquisition."
+            }
+          ]
+        },
+        es: {
+          heroTitle: "Perspectivas e Innovación",
+          heroSubtitle: "Liderando la conversación sobre el futuro de las operaciones fraccionadas.",
+          categories: ["Todos", "Operaciones", "Crecimiento", "Tecnología"],
+          readMore: "Leer Artículo",
+          posts: [
+            {
+              title: "El Futuro de las Operaciones Fraccionadas",
+              category: "Operaciones",
+              date: "12 Feb, 2026",
+              excerpt: "Cómo las Pymes están aprovechando equipos fraccionados para competir con grandes empresas."
+            },
+            {
+              title: "Mapeo Logístico en 2026",
+              category: "Tecnología",
+              date: "28 Ene, 2026",
+              excerpt: "Nuevos protocolos de enrutamiento impulsados por IA están ahorrando miles en combustible."
+            },
+            {
+              title: "Escalando el Éxito del Cliente",
+              category: "Crecimiento",
+              date: "15 Ene, 2026",
+              excerpt: "El arte de mantener un soporte centrado en el humano durante la adquisición rápida de usuarios."
+            }
+          ]
+        }
+      };
+
+      const heroTitle = document.getElementById("heroTitle");
+      const heroSubtitle = document.getElementById("heroSubtitle");
+      const categoryChips = document.getElementById("categoryChips");
+      const postsGrid = document.getElementById("postsGrid");
+      const searchInput = document.getElementById("searchInput");
+      const emptyState = document.getElementById("emptyState");
+
+      let activeCategory = null;
+
+      const getLang = () => (document.documentElement.lang === "es" ? "es" : "en");
+
+      function normalize(s) {
+        return (s || "").toString().toLowerCase().trim();
+      }
+
+      function getCurrentData() {
+        return BLOG_DATA[getLang()] || BLOG_DATA.en;
+      }
+
+      function renderChips() {
+        const data = getCurrentData();
+        categoryChips.innerHTML = "";
+
+        activeCategory = data.categories[0];
+
+        data.categories.forEach((cat) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "chip";
+          btn.textContent = cat;
+          btn.setAttribute("aria-pressed", cat === activeCategory ? "true" : "false");
+
+          btn.addEventListener("click", () => {
+            activeCategory = cat;
+            [...categoryChips.querySelectorAll(".chip")].forEach((b) => {
+              b.setAttribute("aria-pressed", b.textContent === activeCategory ? "true" : "false");
+            });
+            renderPosts();
+          });
+
+          categoryChips.appendChild(btn);
+        });
+      }
+
+      function postMatches(post, q) {
+        const n = normalize(q);
+        if (!n) return true;
+        return normalize(post.title).includes(n) || normalize(post.excerpt).includes(n) || normalize(post.category).includes(n);
+      }
+
+      function categoryMatches(post) {
+        const data = getCurrentData();
+        const first = data.categories[0]; // All / Todos
+        if (activeCategory === first) return true;
+        return post.category === activeCategory;
+      }
+
+      function renderPosts() {
+        const data = getCurrentData();
+        const q = searchInput.value || "";
+
+        const shown = data.posts.filter((p) => categoryMatches(p) && postMatches(p, q));
+
+        postsGrid.innerHTML = "";
+
+        shown.forEach((post) => {
+          const card = document.createElement("article");
+          card.className = "card";
+
+          card.innerHTML = `
+            <div class="card-top">
+              <div class="badge">${post.category}</div>
+            </div>
+            <div class="card-body">
+              <div class="meta" aria-label="Post metadata">
+                <span aria-hidden="true">📅</span>
+                <span>${post.date}</span>
+                <span class="dot" aria-hidden="true"></span>
+                <span aria-hidden="true">✍️</span>
+                <span>Gabriel</span>
+              </div>
+              <h3>${post.title}</h3>
+              <p>${post.excerpt}</p>
+              <div class="card-actions">
+                <a class="read" href="/pages/contact.html">
+                  <span>${data.readMore}</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+                <a class="btn btn-ghost" href="/pages/get-started.html"
+                   data-lang-en="Start Scaling"
+                   data-lang-es="Empezar a Escalar">Start Scaling</a>
+              </div>
+            </div>
+          `;
+
+          postsGrid.appendChild(card);
+        });
+
+        emptyState.style.display = shown.length ? "none" : "block";
+        syncLangText(); // keep CTA translations consistent
+      }
+
+      // Generic sync for data-lang-* elements on this page
+      function syncLangText() {
+        const lang = getLang();
+        document.querySelectorAll("[data-lang-en][data-lang-es]").forEach((node) => {
+          const v = node.getAttribute(lang === "es" ? "data-lang-es" : "data-lang-en");
+          if (typeof v === "string") node.textContent = v;
+        });
+      }
+
+      function renderAll() {
+        const data = getCurrentData();
+        heroTitle.textContent = data.heroTitle;
+        heroSubtitle.textContent = data.heroSubtitle;
+
+        // placeholder translation
+        searchInput.placeholder = getLang() === "es" ? "Buscar artículos…" : "Search posts…";
+
+        renderChips();
+        renderPosts();
+        syncLangText();
+      }
+
+      searchInput.addEventListener("input", () => renderPosts());
+
+      // react to language toggle from app.js (it flips <html lang>)
+      const langBtn = document.getElementById("langToggle");
+      if (langBtn) langBtn.addEventListener("click", () => setTimeout(renderAll, 0));
+
+      renderAll();
+    </script>
+  </body>
+</html>
