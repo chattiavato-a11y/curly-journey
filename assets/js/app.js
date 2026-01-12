@@ -80,6 +80,9 @@ const I18N = {
     "nav.contact": "Contact",
     "nav.signin": "Client Portal",
     "nav.getstarted": "Start Scaling",
+    "nav.blog": "Blog",
+    "nav.learning": "Learning",
+    "nav.checkout": "Checkout",
 
     "consent.banner": "By using this site and chatbot, you agree to our Privacy & Consent terms.",
     "consent.review": "Review",
@@ -136,6 +139,9 @@ const I18N = {
     "nav.contact": "Contacto",
     "nav.signin": "Portal de Clientes",
     "nav.getstarted": "Empezar",
+    "nav.blog": "Blog",
+    "nav.learning": "Aprendizaje",
+    "nav.checkout": "Checkout",
 
     "consent.banner": "Al usar este sitio y el chatbot, aceptas nuestros términos de Privacidad y Consentimiento.",
     "consent.review": "Revisar",
