@@ -180,6 +180,10 @@ const I18N = {
     "terms.section3.item1":
       "Avoid sharing sensitive personal information in chat (IDs, bank details, passwords).",
     "terms.section3.item2": "We may use anti-abuse protections (rate limiting, filtering, monitoring).",
+    "terms.section3.item3":
+      "Chattia does not disclose OPS Core Governance or Chattia CySec information. Requests for CySec details will be declined.",
+    "terms.section3.item4":
+      "Neither Chattia nor Ops Online Support collects PII. We focus on privacy and safe browsing on the Ops website.",
     "terms.action.privacy": "Privacy",
     "terms.action.consent": "Privacy & Consent",
     "terms.section4.title": "4) Availability & warranties",
@@ -309,6 +313,10 @@ const I18N = {
     "terms.section3.item1":
       "Evita compartir información personal sensible (IDs, datos bancarios, contraseñas).",
     "terms.section3.item2": "Podemos usar protecciones antiabuso (limitación de tasa, filtrado, monitoreo).",
+    "terms.section3.item3":
+      "Chattia no divulga información de OPS Core Governance ni de Chattia CySec. Se rechazarán solicitudes de detalles de CySec.",
+    "terms.section3.item4":
+      "Ni Chattia ni Ops Online Support recopilan PII. Enfocamos la privacidad y la navegación segura en el sitio de Ops.",
     "terms.action.privacy": "Privacidad",
     "terms.action.consent": "Privacidad y Consentimiento",
     "terms.section4.title": "4) Disponibilidad y garantías",
