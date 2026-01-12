@@ -155,29 +155,43 @@
         </button>
 
         <nav class="nav" id="primaryNav" aria-label="Primary">
-          <a class="nav-link" href="/index.html" data-nav="home">Home</a>
+          <a class="nav-link" href="/index.html" data-nav="home" data-i18n="nav.home">Home</a>
 
           <div class="nav-dropdown" data-dropdown data-open="false">
             <button class="nav-link nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
-              <span>Services</span>
+              <span data-i18n="nav.services">Services</span>
               <span class="chev" aria-hidden="true">▾</span>
             </button>
             <div class="nav-dropdown-menu" role="menu">
-              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html">Services Overview</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html" data-i18n="nav.services">
+                Services Overview
+              </a>
               <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
-              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html">Logistics Management</a>
-              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html">IT Support Level I &amp; II</a>
-              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html">C-Level Admin Support</a>
-              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html">Customer Relations</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html" data-i18n="nav.submenu.logistics">
+                Logistics Management
+              </a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html" data-i18n="nav.submenu.itsupport">
+                IT Support Level I &amp; II
+              </a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html" data-i18n="nav.submenu.admin">
+                C-Level Admin Support
+              </a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html" data-i18n="nav.submenu.relations">
+                Customer Relations
+              </a>
             </div>
           </div>
 
-          <a class="nav-link" href="/pages/about.html" data-nav="about">About Us</a>
-          <a class="nav-link" href="/pages/careers.html" data-nav="careers">Careers</a>
-          <a class="nav-link" href="/pages/contact.html" data-nav="contact">Contact</a>
+          <a class="nav-link" href="/pages/about.html" data-nav="about" data-i18n="nav.about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers" data-i18n="nav.careers">Careers</a>
+          <a class="nav-link" href="/pages/contact.html" data-nav="contact" data-i18n="nav.contact">Contact</a>
 
-          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin">Client Portal</a>
-          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted">Start Scaling</a>
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin" data-i18n="nav.signin">
+            Client Portal
+          </a>
+          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted" data-i18n="nav.getstarted">
+            Start Scaling
+          </a>
 
           <div class="nav-tools" aria-label="Preferences">
             <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
@@ -199,137 +213,107 @@
         <div class="container">
           <article class="doc-card" aria-label="Terms and Conditions">
             <div class="doc-top">
-              <h1 class="doc-title" data-lang-en="Terms & Conditions" data-lang-es="Términos y Condiciones">
+              <h1 class="doc-title" data-i18n="terms.title">
                 Terms &amp; Conditions
               </h1>
 
               <div class="doc-meta">
-                <span data-lang-en="Last updated:" data-lang-es="Última actualización:">Last updated:</span>
+                <span data-i18n="terms.lastUpdated">Last updated:</span>
                 <span id="lastUpdated"></span>
               </div>
             </div>
 
             <div class="doc-body">
               <div class="notice" role="note">
-                <strong data-lang-en="Summary:" data-lang-es="Resumen:">Summary:</strong>
-                <span
-                  data-lang-en=" Use of this website and chat is subject to fair use, security rules, and “as-is” disclaimers."
-                  data-lang-es=" El uso de este sitio y chat está sujeto a uso justo, reglas de seguridad y descargos “tal cual”."
-                >
+                <strong data-i18n="terms.summaryLabel">Summary:</strong>
+                <span data-i18n="terms.summary">
                   Use of this website and chat is subject to fair use, security rules, and “as-is” disclaimers.
                 </span>
               </div>
 
               <section class="block">
-                <h3 data-lang-en="1) Acceptance" data-lang-es="1) Aceptación">1) Acceptance</h3>
-                <p
-                  data-lang-en="By accessing this site or using our chat/forms, you agree to these Terms. If you do not agree, do not use the site."
-                  data-lang-es="Al acceder a este sitio o usar nuestro chat/formularios, aceptas estos Términos. Si no estás de acuerdo, no uses el sitio."
-                >
+                <h3 data-i18n="terms.section1.title">1) Acceptance</h3>
+                <p data-i18n="terms.section1.body">
                   By accessing this site or using our chat/forms, you agree to these Terms. If you do not agree, do not use the site.
                 </p>
               </section>
 
               <section class="block">
-                <h3 data-lang-en="2) Fair Use" data-lang-es="2) Uso Justo">2) Fair Use</h3>
-                <p
-                  data-lang-en="You agree not to misuse the site or services."
-                  data-lang-es="Aceptas no hacer mal uso del sitio o servicios."
-                >
+                <h3 data-i18n="terms.section2.title">2) Fair Use</h3>
+                <p data-i18n="terms.section2.body">
                   You agree not to misuse the site or services.
                 </p>
                 <ul class="list">
-                  <li data-lang-en="No abuse, harassment, or illegal content." data-lang-es="No abuso, acoso o contenido ilegal.">
+                  <li data-i18n="terms.section2.item1">
                     No abuse, harassment, or illegal content.
                   </li>
-                  <li data-lang-en="No attempts to exploit, bypass security, probe endpoints, or spam." data-lang-es="No intentar explotar, evadir seguridad, probar endpoints o hacer spam.">
+                  <li data-i18n="terms.section2.item2">
                     No attempts to exploit, bypass security, probe endpoints, or spam.
                   </li>
-                  <li data-lang-en="No automated scraping or excessive requests that degrade availability." data-lang-es="No scraping automatizado o solicitudes excesivas que afecten disponibilidad.">
+                  <li data-i18n="terms.section2.item3">
                     No automated scraping or excessive requests that degrade availability.
                   </li>
-                  <li data-lang-en="You are responsible for the content you submit." data-lang-es="Eres responsable del contenido que envías.">
+                  <li data-i18n="terms.section2.item4">
                     You are responsible for the content you submit.
                   </li>
                 </ul>
               </section>
 
               <section class="block">
-                <h3 data-lang-en="3) Chat & content" data-lang-es="3) Chat y contenido">3) Chat & content</h3>
-                <p
-                  data-lang-en="Chat responses may be incorrect or incomplete. Do not rely on chat for legal, medical, or financial decisions."
-                  data-lang-es="Las respuestas del chat pueden ser incorrectas o incompletas. No uses el chat para decisiones legales, médicas o financieras."
-                >
+                <h3 data-i18n="terms.section3.title">3) Chat & content</h3>
+                <p data-i18n="terms.section3.body">
                   Chat responses may be incorrect or incomplete. Do not rely on chat for legal, medical, or financial decisions.
                 </p>
                 <ul class="list">
-                  <li
-                    data-lang-en="Avoid sharing sensitive personal information in chat (IDs, bank details, passwords)."
-                    data-lang-es="Evita compartir información personal sensible (IDs, datos bancarios, contraseñas)."
-                  >
+                  <li data-i18n="terms.section3.item1">
                     Avoid sharing sensitive personal information in chat (IDs, bank details, passwords).
                   </li>
-                  <li
-                    data-lang-en="We may use anti-abuse protections (rate limiting, filtering, monitoring)."
-                    data-lang-es="Podemos usar protecciones antiabuso (limitación de tasa, filtrado, monitoreo)."
-                  >
+                  <li data-i18n="terms.section3.item2">
                     We may use anti-abuse protections (rate limiting, filtering, monitoring).
                   </li>
                 </ul>
 
                 <div class="doc-actions">
-                  <a class="btn btn-ghost" href="/pages/privacy.html" data-lang-en="Privacy" data-lang-es="Privacidad">Privacy</a>
-                  <a class="btn btn-ghost" href="/pages/consent.html" data-lang-en="Privacy & Consent" data-lang-es="Privacidad y Consentimiento">
+                  <a class="btn btn-ghost" href="/pages/privacy.html" data-i18n="terms.action.privacy">Privacy</a>
+                  <a class="btn btn-ghost" href="/pages/consent.html" data-i18n="terms.action.consent">
                     Privacy &amp; Consent
                   </a>
                 </div>
               </section>
 
               <section class="block">
-                <h3 data-lang-en="4) Availability & warranties" data-lang-es="4) Disponibilidad y garantías">
+                <h3 data-i18n="terms.section4.title">
                   4) Availability & warranties
                 </h3>
-                <p
-                  data-lang-en="The site and services are provided “as-is” without warranties. We do not guarantee uninterrupted availability or accuracy."
-                  data-lang-es="El sitio y servicios se proporcionan “tal cual” sin garantías. No garantizamos disponibilidad ininterrumpida ni exactitud."
-                >
+                <p data-i18n="terms.section4.body">
                   The site and services are provided “as-is” without warranties. We do not guarantee uninterrupted availability or accuracy.
                 </p>
               </section>
 
               <section class="block">
-                <h3 data-lang-en="5) Limitation of liability" data-lang-es="5) Limitación de responsabilidad">
+                <h3 data-i18n="terms.section5.title">
                   5) Limitation of liability
                 </h3>
-                <p
-                  data-lang-en="To the maximum extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages arising from your use of the site."
-                  data-lang-es="En la máxima medida permitida por ley, no somos responsables por daños indirectos, incidentales, especiales, consecuentes o punitivos derivados del uso del sitio."
-                >
+                <p data-i18n="terms.section5.body">
                   To the maximum extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages arising from your use of the site.
                 </p>
               </section>
 
               <section class="block">
-                <h3 data-lang-en="6) Changes" data-lang-es="6) Cambios">6) Changes</h3>
-                <p
-                  data-lang-en="We may update these Terms from time to time. The “Last updated” date indicates when changes were made."
-                  data-lang-es="Podemos actualizar estos Términos ocasionalmente. La fecha de “Última actualización” indica cuándo se hicieron cambios."
-                >
+                <h3 data-i18n="terms.section6.title">6) Changes</h3>
+                <p data-i18n="terms.section6.body">
                   We may update these Terms from time to time. The “Last updated” date indicates when changes were made.
                 </p>
               </section>
 
               <section class="block">
-                <h3 data-lang-en="7) Contact" data-lang-es="7) Contacto">7) Contact</h3>
-                <p
-                  data-lang-en="If you have questions about these Terms, contact us."
-                  data-lang-es="Si tienes preguntas sobre estos Términos, contáctanos."
-                >
+                <h3 data-i18n="terms.section7.title">7) Contact</h3>
+                <p data-i18n="terms.section7.body">
                   If you have questions about these Terms, contact us.
                 </p>
 
                 <div class="doc-actions">
-                  <a class="btn btn-primary" href="/pages/contact.html" data-lang-en="Contact" data-lang-es="Contacto">Contact</a>
+                  <a class="btn btn-primary" href="/pages/contact.html" data-i18n="terms.action.contact">Contact</a>
                 </div>
               </section>
             </div>
@@ -342,22 +326,20 @@
       <div class="container footer-grid">
         <div class="footer-brand">
           <div class="footer-title">Gabriel Professional Services</div>
-          <div class="footer-note"
-            data-lang-en="Secure-by-design operational support for modern teams."
-            data-lang-es="Soporte operativo con seguridad desde el diseño.">
+          <div class="footer-note" data-i18n="footer.note">
             Secure-by-design operational support for modern teams.
           </div>
         </div>
 
         <nav class="footer-nav" aria-label="Footer">
-          <a href="/pages/about.html">About Us</a>
-          <a href="/pages/services.html">Services</a>
-          <a href="/pages/careers.html">Careers</a>
-          <a href="/pages/contact.html">Contact</a>
-          <a href="/pages/privacy.html">Privacy</a>
-          <a href="/pages/terms.html">Terms</a>
-          <a href="/pages/gdpr.html">GDPR</a>
-          <a href="/pages/consent.html">Privacy &amp; Consent</a>
+          <a href="/pages/about.html" data-i18n="nav.about">About Us</a>
+          <a href="/pages/services.html" data-i18n="nav.services">Services</a>
+          <a href="/pages/careers.html" data-i18n="nav.careers">Careers</a>
+          <a href="/pages/contact.html" data-i18n="nav.contact">Contact</a>
+          <a href="/pages/privacy.html" data-i18n="footer.privacy">Privacy</a>
+          <a href="/pages/terms.html" data-i18n="footer.terms">Terms</a>
+          <a href="/pages/gdpr.html" data-i18n="footer.gdpr">GDPR</a>
+          <a href="/pages/consent.html" data-i18n="footer.consent">Privacy &amp; Consent</a>
         </nav>
 
         <div class="footer-bottom">
@@ -376,21 +358,6 @@
         el.textContent = d.toISOString().slice(0, 10);
       }
 
-      // Page: EN/ES swap for data-lang-* fields
-      const getLang = () => (document.documentElement.lang === "es" ? "es" : "en");
-
-      function syncLangText() {
-        const lang = getLang();
-        document.querySelectorAll("[data-lang-en][data-lang-es]").forEach((node) => {
-          const v = node.getAttribute(lang === "es" ? "data-lang-es" : "data-lang-en");
-          if (typeof v === "string") node.textContent = v;
-        });
-      }
-
-      const langBtn = document.getElementById("langToggle");
-      if (langBtn) langBtn.addEventListener("click", () => setTimeout(syncLangText, 0));
-
-      syncLangText();
     </script>
   </body>
 </html>
