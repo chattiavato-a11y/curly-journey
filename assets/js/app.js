@@ -122,6 +122,75 @@ const I18N = {
     "footer.terms": "Terms",
     "footer.gdpr": "GDPR",
     "footer.consent": "Privacy & Consent",
+
+    "portal.title": "Client Portal",
+    "portal.subtitle": "Secure access",
+    "portal.headline": "Sign in to manage work",
+    "portal.description": "Track requests, view updates, and collaborate with your dedicated support team.",
+    "portal.trust1": "Least-privilege access",
+    "portal.trust2": "Security-first workflow",
+    "portal.trust3": "Clear audit trails",
+    "portal.needAccess": "Need access?",
+    "portal.useRequest": "Use “Request Access”",
+    "portal.welcome": "Welcome back",
+    "portal.tab.signin": "Sign In",
+    "portal.tab.request": "Request Access",
+    "portal.field.email": "Email",
+    "portal.field.emailHelp": "Use the email associated with your account.",
+    "portal.field.password": "Password",
+    "portal.field.passwordHelp": "Demo mode: this page does not authenticate yet.",
+    "portal.action.contactSupport": "Contact Support",
+    "portal.action.signin": "Sign In",
+    "portal.field.name": "Full Name",
+    "portal.field.workEmail": "Work Email",
+    "portal.field.company": "Company",
+    "portal.field.message": "Message",
+    "portal.field.messagePlaceholder": "Tell us what you need access to…",
+    "portal.field.messageHelp": "We’ll verify and follow up with next steps.",
+    "portal.action.backHome": "Back to Home",
+    "portal.action.submitRequest": "Submit Request",
+    "portal.tip": "Tip: Use Contact for urgent requests.",
+    "portal.modal.title": "Done",
+    "portal.modal.message": "Your request was received.",
+    "portal.modal.close": "Close",
+    "portal.modal.gotoContact": "Go to Contact",
+    "portal.modal.signinDemo": "Demo mode: sign-in is not wired yet. Use Contact to continue.",
+    "portal.modal.requestReceived": "Request received. We’ll verify and follow up with next steps.",
+
+    "terms.title": "Terms & Conditions",
+    "terms.lastUpdated": "Last updated:",
+    "terms.summaryLabel": "Summary:",
+    "terms.summary":
+      "Use of this website and chat is subject to fair use, security rules, and “as-is” disclaimers.",
+    "terms.section1.title": "1) Acceptance",
+    "terms.section1.body":
+      "By accessing this site or using our chat/forms, you agree to these Terms. If you do not agree, do not use the site.",
+    "terms.section2.title": "2) Fair Use",
+    "terms.section2.body": "You agree not to misuse the site or services.",
+    "terms.section2.item1": "No abuse, harassment, or illegal content.",
+    "terms.section2.item2": "No attempts to exploit, bypass security, probe endpoints, or spam.",
+    "terms.section2.item3": "No automated scraping or excessive requests that degrade availability.",
+    "terms.section2.item4": "You are responsible for the content you submit.",
+    "terms.section3.title": "3) Chat & content",
+    "terms.section3.body":
+      "Chat responses may be incorrect or incomplete. Do not rely on chat for legal, medical, or financial decisions.",
+    "terms.section3.item1":
+      "Avoid sharing sensitive personal information in chat (IDs, bank details, passwords).",
+    "terms.section3.item2": "We may use anti-abuse protections (rate limiting, filtering, monitoring).",
+    "terms.action.privacy": "Privacy",
+    "terms.action.consent": "Privacy & Consent",
+    "terms.section4.title": "4) Availability & warranties",
+    "terms.section4.body":
+      "The site and services are provided “as-is” without warranties. We do not guarantee uninterrupted availability or accuracy.",
+    "terms.section5.title": "5) Limitation of liability",
+    "terms.section5.body":
+      "To the maximum extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages arising from your use of the site.",
+    "terms.section6.title": "6) Changes",
+    "terms.section6.body":
+      "We may update these Terms from time to time. The “Last updated” date indicates when changes were made.",
+    "terms.section7.title": "7) Contact",
+    "terms.section7.body": "If you have questions about these Terms, contact us.",
+    "terms.action.contact": "Contact",
   },
 
   es: {
@@ -178,6 +247,76 @@ const I18N = {
     "footer.terms": "Términos",
     "footer.gdpr": "GDPR",
     "footer.consent": "Privacidad y Consentimiento",
+
+    "portal.title": "Portal de Cliente",
+    "portal.subtitle": "Acceso seguro",
+    "portal.headline": "Inicia sesión para gestionar trabajo",
+    "portal.description":
+      "Revisa solicitudes, ve actualizaciones y colabora con tu equipo de soporte.",
+    "portal.trust1": "Acceso de mínimo privilegio",
+    "portal.trust2": "Flujo con enfoque de seguridad",
+    "portal.trust3": "Trazabilidad clara",
+    "portal.needAccess": "¿Necesitas acceso?",
+    "portal.useRequest": "Usa “Solicitar acceso”",
+    "portal.welcome": "Bienvenido/a",
+    "portal.tab.signin": "Iniciar sesión",
+    "portal.tab.request": "Solicitar acceso",
+    "portal.field.email": "Correo",
+    "portal.field.emailHelp": "Usa el correo asociado a tu cuenta.",
+    "portal.field.password": "Contraseña",
+    "portal.field.passwordHelp": "Modo demo: esta página aún no autentica.",
+    "portal.action.contactSupport": "Contactar Soporte",
+    "portal.action.signin": "Iniciar sesión",
+    "portal.field.name": "Nombre completo",
+    "portal.field.workEmail": "Correo de trabajo",
+    "portal.field.company": "Empresa",
+    "portal.field.message": "Mensaje",
+    "portal.field.messagePlaceholder": "Cuéntanos a qué necesitas acceso…",
+    "portal.field.messageHelp": "Verificaremos y te contactaremos con los siguientes pasos.",
+    "portal.action.backHome": "Volver al Inicio",
+    "portal.action.submitRequest": "Enviar solicitud",
+    "portal.tip": "Tip: Usa Contacto para solicitudes urgentes.",
+    "portal.modal.title": "Listo",
+    "portal.modal.message": "Tu solicitud fue recibida.",
+    "portal.modal.close": "Cerrar",
+    "portal.modal.gotoContact": "Ir a Contacto",
+    "portal.modal.signinDemo": "Modo demo: el inicio de sesión aún no está conectado.",
+    "portal.modal.requestReceived": "Solicitud recibida. Verificaremos y te contactaremos con los siguientes pasos.",
+
+    "terms.title": "Términos y Condiciones",
+    "terms.lastUpdated": "Última actualización:",
+    "terms.summaryLabel": "Resumen:",
+    "terms.summary":
+      "El uso de este sitio y chat está sujeto a uso justo, reglas de seguridad y descargos “tal cual”.",
+    "terms.section1.title": "1) Aceptación",
+    "terms.section1.body":
+      "Al acceder a este sitio o usar nuestro chat/formularios, aceptas estos Términos. Si no estás de acuerdo, no uses el sitio.",
+    "terms.section2.title": "2) Uso Justo",
+    "terms.section2.body": "Aceptas no hacer mal uso del sitio o servicios.",
+    "terms.section2.item1": "No abuso, acoso o contenido ilegal.",
+    "terms.section2.item2": "No intentar explotar, evadir seguridad, probar endpoints o hacer spam.",
+    "terms.section2.item3": "No scraping automatizado o solicitudes excesivas que afecten disponibilidad.",
+    "terms.section2.item4": "Eres responsable del contenido que envías.",
+    "terms.section3.title": "3) Chat y contenido",
+    "terms.section3.body":
+      "Las respuestas del chat pueden ser incorrectas o incompletas. No uses el chat para decisiones legales, médicas o financieras.",
+    "terms.section3.item1":
+      "Evita compartir información personal sensible (IDs, datos bancarios, contraseñas).",
+    "terms.section3.item2": "Podemos usar protecciones antiabuso (limitación de tasa, filtrado, monitoreo).",
+    "terms.action.privacy": "Privacidad",
+    "terms.action.consent": "Privacidad y Consentimiento",
+    "terms.section4.title": "4) Disponibilidad y garantías",
+    "terms.section4.body":
+      "El sitio y servicios se proporcionan “tal cual” sin garantías. No garantizamos disponibilidad ininterrumpida ni exactitud.",
+    "terms.section5.title": "5) Limitación de responsabilidad",
+    "terms.section5.body":
+      "En la máxima medida permitida por ley, no somos responsables por daños indirectos, incidentales, especiales, consecuentes o punitivos derivados del uso del sitio.",
+    "terms.section6.title": "6) Cambios",
+    "terms.section6.body":
+      "Podemos actualizar estos Términos ocasionalmente. La fecha de “Última actualización” indica cuándo se hicieron cambios.",
+    "terms.section7.title": "7) Contacto",
+    "terms.section7.body": "Si tienes preguntas sobre estos Términos, contáctanos.",
+    "terms.action.contact": "Contacto",
   },
 };
 
@@ -191,6 +330,12 @@ function applyLang(lang) {
     if (typeof value === "string") el.textContent = value;
   });
 
+  $$("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    const value = I18N[safe]?.[key];
+    if (typeof value === "string") el.setAttribute("placeholder", value);
+  });
+
   const btn = $("#langToggle");
   if (btn) {
     const pill = btn.querySelector(".lang-pill");
@@ -199,6 +344,12 @@ function applyLang(lang) {
     btn.title = `Language: ${safe.toUpperCase()}`;
   }
 }
+
+window.GPS_I18N = I18N;
+window.gpsTranslate = (key, fallback = "") => {
+  const lang = document.documentElement.lang === "es" ? "es" : "en";
+  return I18N[lang]?.[key] ?? fallback;
+};
 
 function initLang() {
   const saved = storage.get("gps_lang", "en");
