@@ -21,7 +21,7 @@
     />
 
     <!-- Fallback redirect (works even if JS is blocked) -->
-    <meta http-equiv="refresh" content="0; url=/pages/index.html" />
+    <meta http-equiv="refresh" content="0; url=/index.html" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -86,9 +86,7 @@
       // Primary redirect
       (function () {
         try {
-          if (location.pathname === "/" || location.pathname === "/index.html") {
-            location.replace("/pages/index.html");
-          }
+          location.replace("/index.html");
         } catch (e) {
           // meta refresh will still handle redirect
         }
@@ -103,8 +101,8 @@
         Taking you to the main site.
         If you are not redirected automatically, use the button below.
       </p>
-      <a href="/pages/index.html">Go to Home</a>
-      <p class="small">Destination: /pages/index.html</p>
+      <a href="/index.html">Go to Home</a>
+      <p class="small">Destination: /index.html</p>
     </main>
   </body>
 </html>
