@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="description" content="Terms & Conditions — Gabriel Professional Services" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        form-action 'self';
+        img-src 'self' data: blob: https:;
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        connect-src 'self' https:;
+      "
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>Terms &amp; Conditions · Gabriel Professional Services</title>
+
+    <style>
+      .doc-wrap {
+        padding: 26px 0 72px;
+        background: radial-gradient(1200px 600px at 50% -10%, rgba(124,58,237,0.18), transparent 60%),
+                    radial-gradient(900px 520px at 10% 10%, rgba(147,51,234,0.14), transparent 55%),
+                    radial-gradient(900px 520px at 90% 12%, rgba(124,58,237,0.10), transparent 55%);
+      }
+
+      .doc-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 26px;
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+      }
+
+      .doc-top {
+        padding: 18px 18px 14px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .doc-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 950;
+        letter-spacing: -0.02em;
+      }
+
+      .doc-meta {
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+      }
+
+      .doc-body {
+        padding: 18px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .notice {
+        border-radius: 18px;
+        padding: 14px;
+        background: rgba(124,58,237,0.08);
+        border: 1px solid rgba(124,58,237,0.16);
+        color: var(--muted);
+        font-weight: 700;
+        line-height: 1.45;
+      }
+      .notice strong { color: var(--text); font-weight: 950; }
+
+      .block {
+        border-radius: 18px;
+        padding: 14px;
+        background: var(--bg-elev);
+        border: 1px solid var(--border);
+      }
+
+      .block h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .block p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .list {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-weight: 650;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .list li { margin: 6px 0; }
+
+      .doc-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 980px) {
+        .doc-body, .doc-top { padding: 16px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-elevate-on-scroll="true">
+      <div class="container header-row">
+        <a class="brand" href="/index.html" aria-label="Go to Home">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="rocket-3d" id="rocketLogo" role="img" aria-label="3D Rocket logo"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">Gabriel</span>
+            <span class="brand-subtitle">Professional Services</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a class="nav-link" href="/index.html" data-nav="home">Home</a>
+
+          <div class="nav-dropdown" data-dropdown data-open="false">
+            <button class="nav-link nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Services</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/services.html">Services Overview</a>
+              <div class="nav-dropdown-sep" role="separator" aria-hidden="true"></div>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/logistics.html">Logistics Management</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/it-support.html">IT Support Level I &amp; II</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/admin-support.html">C-Level Admin Support</a>
+              <a role="menuitem" class="nav-dropdown-item" href="/pages/customer-relations.html">Customer Relations</a>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/pages/about.html" data-nav="about">About Us</a>
+          <a class="nav-link" href="/pages/careers.html" data-nav="careers">Careers</a>
+          <a class="nav-link" href="/pages/contact.html" data-nav="contact">Contact</a>
+
+          <a class="nav-link nav-link-quiet" href="/pages/signin.html" data-nav="signin">Client Portal</a>
+          <a class="btn btn-primary" href="/pages/get-started.html" data-nav="getstarted">Start Scaling</a>
+
+          <div class="nav-tools" aria-label="Preferences">
+            <button class="btn btn-ghost" type="button" id="themeToggle" aria-pressed="false" title="Toggle theme">
+              <span class="sr-only">Toggle theme</span>
+              <span aria-hidden="true">◐</span>
+            </button>
+
+            <button class="btn btn-ghost" type="button" id="langToggle" aria-pressed="false" title="Toggle language">
+              <span class="sr-only">Toggle language</span>
+              <span class="lang-pill" aria-hidden="true">EN</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="doc-wrap">
+        <div class="container">
+          <article class="doc-card" aria-label="Terms and Conditions">
+            <div class="doc-top">
+              <h1 class="doc-title" data-lang-en="Terms & Conditions" data-lang-es="Términos y Condiciones">
+                Terms &amp; Conditions
+              </h1>
+
+              <div class="doc-meta">
+                <span data-lang-en="Last updated:" data-lang-es="Última actualización:">Last updated:</span>
+                <span id="lastUpdated"></span>
+              </div>
+            </div>
+
+            <div class="doc-body">
+              <div class="notice" role="note">
+                <strong data-lang-en="Summary:" data-lang-es="Resumen:">Summary:</strong>
+                <span
+                  data-lang-en=" Use of this website and chat is subject to fair use, security rules, and “as-is” disclaimers."
+                  data-lang-es=" El uso de este sitio y chat está sujeto a uso justo, reglas de seguridad y descargos “tal cual”."
+                >
+                  Use of this website and chat is subject to fair use, security rules, and “as-is” disclaimers.
+                </span>
+              </div>
+
+              <section class="block">
+                <h3 data-lang-en="1) Acceptance" data-lang-es="1) Aceptación">1) Acceptance</h3>
+                <p
+                  data-lang-en="By accessing this site or using our chat/forms, you agree to these Terms. If you do not agree, do not use the site."
+                  data-lang-es="Al acceder a este sitio o usar nuestro chat/formularios, aceptas estos Términos. Si no estás de acuerdo, no uses el sitio."
+                >
+                  By accessing this site or using our chat/forms, you agree to these Terms. If you do not agree, do not use the site.
+                </p>
+              </section>
+
+              <section class="block">
+                <h3 data-lang-en="2) Fair Use" data-lang-es="2) Uso Justo">2) Fair Use</h3>
+                <p
+                  data-lang-en="You agree not to misuse the site or services."
+                  data-lang-es="Aceptas no hacer mal uso del sitio o servicios."
+                >
+                  You agree not to misuse the site or services.
+                </p>
+                <ul class="list">
+                  <li data-lang-en="No abuse, harassment, or illegal content." data-lang-es="No abuso, acoso o contenido ilegal.">
+                    No abuse, harassment, or illegal content.
+                  </li>
+                  <li data-lang-en="No attempts to exploit, bypass security, probe endpoints, or spam." data-lang-es="No intentar explotar, evadir seguridad, probar endpoints o hacer spam.">
+                    No attempts to exploit, bypass security, probe endpoints, or spam.
+                  </li>
+                  <li data-lang-en="No automated scraping or excessive requests that degrade availability." data-lang-es="No scraping automatizado o solicitudes excesivas que afecten disponibilidad.">
+                    No automated scraping or excessive requests that degrade availability.
+                  </li>
+                  <li data-lang-en="You are responsible for the content you submit." data-lang-es="Eres responsable del contenido que envías.">
+                    You are responsible for the content you submit.
+                  </li>
+                </ul>
+              </section>
+
+              <section class="block">
+                <h3 data-lang-en="3) Chat & content" data-lang-es="3) Chat y contenido">3) Chat & content</h3>
+                <p
+                  data-lang-en="Chat responses may be incorrect or incomplete. Do not rely on chat for legal, medical, or financial decisions."
+                  data-lang-es="Las respuestas del chat pueden ser incorrectas o incompletas. No uses el chat para decisiones legales, médicas o financieras."
+                >
+                  Chat responses may be incorrect or incomplete. Do not rely on chat for legal, medical, or financial decisions.
+                </p>
+                <ul class="list">
+                  <li
+                    data-lang-en="Avoid sharing sensitive personal information in chat (IDs, bank details, passwords)."
+                    data-lang-es="Evita compartir información personal sensible (IDs, datos bancarios, contraseñas)."
+                  >
+                    Avoid sharing sensitive personal information in chat (IDs, bank details, passwords).
+                  </li>
+                  <li
+                    data-lang-en="We may use anti-abuse protections (rate limiting, filtering, monitoring)."
+                    data-lang-es="Podemos usar protecciones antiabuso (limitación de tasa, filtrado, monitoreo)."
+                  >
+                    We may use anti-abuse protections (rate limiting, filtering, monitoring).
+                  </li>
+                </ul>
+
+                <div class="doc-actions">
+                  <a class="btn btn-ghost" href="/pages/privacy.html" data-lang-en="Privacy" data-lang-es="Privacidad">Privacy</a>
+                  <a class="btn btn-ghost" href="/pages/consent.html" data-lang-en="Privacy & Consent" data-lang-es="Privacidad y Consentimiento">
+                    Privacy &amp; Consent
+                  </a>
+                </div>
+              </section>
+
+              <section class="block">
+                <h3 data-lang-en="4) Availability & warranties" data-lang-es="4) Disponibilidad y garantías">
+                  4) Availability & warranties
+                </h3>
+                <p
+                  data-lang-en="The site and services are provided “as-is” without warranties. We do not guarantee uninterrupted availability or accuracy."
+                  data-lang-es="El sitio y servicios se proporcionan “tal cual” sin garantías. No garantizamos disponibilidad ininterrumpida ni exactitud."
+                >
+                  The site and services are provided “as-is” without warranties. We do not guarantee uninterrupted availability or accuracy.
+                </p>
+              </section>
+
+              <section class="block">
+                <h3 data-lang-en="5) Limitation of liability" data-lang-es="5) Limitación de responsabilidad">
+                  5) Limitation of liability
+                </h3>
+                <p
+                  data-lang-en="To the maximum extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages arising from your use of the site."
+                  data-lang-es="En la máxima medida permitida por ley, no somos responsables por daños indirectos, incidentales, especiales, consecuentes o punitivos derivados del uso del sitio."
+                >
+                  To the maximum extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages arising from your use of the site.
+                </p>
+              </section>
+
+              <section class="block">
+                <h3 data-lang-en="6) Changes" data-lang-es="6) Cambios">6) Changes</h3>
+                <p
+                  data-lang-en="We may update these Terms from time to time. The “Last updated” date indicates when changes were made."
+                  data-lang-es="Podemos actualizar estos Términos ocasionalmente. La fecha de “Última actualización” indica cuándo se hicieron cambios."
+                >
+                  We may update these Terms from time to time. The “Last updated” date indicates when changes were made.
+                </p>
+              </section>
+
+              <section class="block">
+                <h3 data-lang-en="7) Contact" data-lang-es="7) Contacto">7) Contact</h3>
+                <p
+                  data-lang-en="If you have questions about these Terms, contact us."
+                  data-lang-es="Si tienes preguntas sobre estos Términos, contáctanos."
+                >
+                  If you have questions about these Terms, contact us.
+                </p>
+
+                <div class="doc-actions">
+                  <a class="btn btn-primary" href="/pages/contact.html" data-lang-en="Contact" data-lang-es="Contacto">Contact</a>
+                </div>
+              </section>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-title">Gabriel Professional Services</div>
+          <div class="footer-note"
+            data-lang-en="Secure-by-design operational support for modern teams."
+            data-lang-es="Soporte operativo con seguridad desde el diseño.">
+            Secure-by-design operational support for modern teams.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/pages/about.html">About Us</a>
+          <a href="/pages/services.html">Services</a>
+          <a href="/pages/careers.html">Careers</a>
+          <a href="/pages/contact.html">Contact</a>
+          <a href="/pages/privacy.html">Privacy</a>
+          <a href="/pages/terms.html">Terms</a>
+          <a href="/pages/gdpr.html">GDPR</a>
+          <a href="/pages/consent.html">Privacy &amp; Consent</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span class="copyright">© <span id="year"></span> Gabriel</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/app.js"></script>
+
+    <script type="module">
+      // Date
+      const el = document.getElementById("lastUpdated");
+      if (el) {
+        const d = new Date();
+        el.textContent = d.toISOString().slice(0, 10);
+      }
+
+      // Page: EN/ES swap for data-lang-* fields
+      const getLang = () => (document.documentElement.lang === "es" ? "es" : "en");
+
+      function syncLangText() {
+        const lang = getLang();
+        document.querySelectorAll("[data-lang-en][data-lang-es]").forEach((node) => {
+          const v = node.getAttribute(lang === "es" ? "data-lang-es" : "data-lang-en");
+          if (typeof v === "string") node.textContent = v;
+        });
+      }
+
+      const langBtn = document.getElementById("langToggle");
+      if (langBtn) langBtn.addEventListener("click", () => setTimeout(syncLangText, 0));
+
+      syncLangText();
+    </script>
+  </body>
+</html>
